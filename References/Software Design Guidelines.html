@@ -1,0 +1,66 @@
+<p>
+	&nbsp;</p>
+<p>
+	&nbsp;</p>
+<div>
+	<b><font size="5">Class Design</font></b></div>
+<p>
+	Follow the&nbsp;<a href="http://msdn.microsoft.com/en-us/library/ms229042.aspx">Design Guidelines for Developing Class Libraries</a><span class="Apple-style-span" style="font-size: 12px; font-weight: normal; ">&nbsp;when designing classes, with the following exceptions:</span></p>
+<p>
+	1) Add the &quot;_&quot; prefix for type member fields.</p>
+<p>
+	&nbsp;</p>
+<p>
+	<b><font size="5">User Interface</font></b></p>
+<p>
+	&nbsp;</p>
+<p>
+	Follow the <a href="http://msdn.microsoft.com/en-us/library/aa511258(v=MSDN.10).aspx">Windows User Experience Interaction Guidelines</a>&nbsp;for general direction when building user interfaces for custom Windows applications.</p>
+<p>
+	<span>1)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>DevExpress controls should be used in most cases. Some customers do not want/wish to use them though, in which case standard Windows controls should be used.</p>
+<p>
+	<span>2)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>In place of the Segoe UI use the Tahoma font</p>
+<p>
+	<span>3)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Within editor controls (lists, textboxes, dropdowns, etc) use Tahoma 8.25pt font</p>
+<p>
+	<span>4)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Command buttons should be sized as 75px X 23px, unless it adds clarity to the view to increase the width of the button to accommodate the button text</p>
+<p>
+	<span>5)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Action panels (button panels at the bottom of dialogs, etc):</p>
+<p style="margin-left: 40px; ">
+	<span>a.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Should be docked to the bottom of the containing view</p>
+<p style="margin-left: 40px; ">
+	<span>b.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Should have a height of 45px</p>
+<p style="margin-left: 40px; ">
+	<span>c.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Controls contained within the panel should be centered vertically</p>
+<p>
+	<span>6)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Message panel (panel showing a info/warning/error icon and message within the Action panel)</p>
+<p style="margin-left: 40px; ">
+	<span>a.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Should be docked left within the Action panel</p>
+<p style="margin-left: 40px; ">
+	<span>b.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Should have the message text label sized at 11pt, normal weight</p>
+<p>
+	&nbsp;</p>
+<p>
+	<b><font size="5">Handlers</font></b></p>
+<p>
+	The purpose of a handler is to join a View and a Model, provide inter-handler and controller messaging, and manage menus.</p>
+<p>
+	<span>1)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Do not initialize menu fields (member variables) to null (Nothing in Visual Basic). The reason is that the menu field is managed by the superclass ViewHandlerBase</p>
+<p>
+	&nbsp;</p>
+<p>
+	<b><font size="5">Models</font></b></p>
+<p>
+	The purpose of a model is to provide domain specific data and state for the View to consume.</p>
+<p>
+	&nbsp;</p>
+<p>
+	<b><font size="5">Business Entities</font></b></p>
+<p>
+	The purpose of a business entity is to provide an object oriented way of looking at the problem domain. The p3 Technologies framework provides entities that are modeled after the CSLA business objects amongst others.</p>
+<p>
+	<span>1)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Entities are not instantiated directly under normal use; each entity implements a factory to create instances of individual entities.</p>
+<p>
+	<span>2)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Entity Ctor&rsquo;s are always private</p>
+<p>
+	&nbsp;</p>

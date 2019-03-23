@@ -1,0 +1,53 @@
+﻿@model TestApplication.Models.ExampleModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+  
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <h3 id="username"></h3>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+       <p>Title 1 from ExampleModel is @Model.Title1 </p>
+    </div>
+    <div class="col-md-3">
+       <p>Title 2 from ExampleModel is @Model.Title2 </p>
+    </div>
+    <div class="col-md-3">
+       <p>Title 3 from ExampleModel is @Model.Title3 </p>
+    </div>
+    <div class="col-md-3">
+      <p>We can use c# to print out every element in an array, or a database...  </p>
+      @{ 
+        foreach(int num in Model.Array)
+        {
+          int i = 0;
+          <p>Element at index @i is @num .</p>
+          i++;
+        }
+      }
+    </div>
+  @using (Ajax.BeginForm("ControllerMethod", "Home",
+  new AjaxOptions()
+  {
+    
+    OnBegin = "PostingForm",
+    OnSuccess = "PostingComplete"
+  },
+  new
+  {
+    id = "form",
+    name = "form"
+  }
+  ))
+  {
+    <label for="testInput" >Enter your name and click submit</label>
+    <input id="testInput" class="form-control" name="Test" />
+  }
+  <button class="btn btn-primary" style="margin-top: 10px;" type="button" onclick="$('#form').submit(); return false;"> submit form </button>
+
+
+</div>

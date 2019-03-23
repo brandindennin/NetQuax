@@ -1,0 +1,83 @@
+<h1 style="text-align: center">
+	<u>Database Scripting Guideline</u></h1>
+<p>
+	Last updated: 03/17/2011(JP)</p>
+<h2>
+	General</h2>
+<p>
+	Alway indent 2 spaces (not tabs)</p>
+<p>
+	Always capitalize SQL keywords and functions</p>
+<p>
+	For select procs (&quot;rtv_&quot;) always the following statements at the beginning of the proc:</p>
+<p style="margin-left: 40px">
+	SET NOCOUNT ON<br />
+	SET TRANSACTION ISOLATION LEVEL READ COMMITTED</p>
+<p>
+	Table names should be plural</p>
+<p>
+	Do <u>not</u> use SELECT * - instead you should either SELECT NULL or SELECT [columns]</p>
+<p>
+	Do not just copy-n-paste the SQL script from the designer into a SQL file, this will always result in improperly formatted SQL and duplicate code... duplicate code violates the&nbsp;<a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself" target="_blank">DRY principle</a></p>
+<p>
+	<span style="font-size: 12px; "><span style="font-family: tahoma, geneva, sans-serif; ">At the top of the script specify the new database to use as &quot;USE &lt;database name&gt;&quot;</span></span></p>
+<p>
+	<span style="font-size: 12px; "><span style="font-family: tahoma, geneva, sans-serif; ">After the &quot;USE&quot; clause specifying the database to use, set the ANSI_NULLS, QUOTED_IDENTIFIER, and&nbsp;ANSI_PADDING to &quot;ON&quot;</span></span></p>
+<p>
+	Only use square brackets ( &quot;[&quot;, and &quot;]&quot; ) &nbsp;when specifying the File Group the table should be created on or to wrap SQL keywords or reserved words like &quot;Description&quot;, &quot;Credentials&quot;, etc.</p>
+<p>
+	Always capitalize data types (i.e. VARCHAR, not varchar) and SQL commands (i.e. REPLACE, INSERT INTO, etc)</p>
+<div>
+	When using an alias names for column names, wrap it in quotes and use normal Pascal Casing. For example:</div>
+<div style="margin-left: 40px; ">
+	ColumnName AS &#39;ThisIsAnAlias&#39;</div>
+<div>
+	&nbsp;</div>
+<div>
+	When using an alias on a table name, do not wrap it in quotes and use lower case. For example:</div>
+<div style="margin-left: 40px; ">
+	TableName AS t</div>
+<div>
+	&nbsp;</div>
+<div>
+	<em><span style="font-size: 12px"><span style="font-family: tahoma, geneva, sans-serif">When redesigning an existing database make sure to do the following:</span></span></em></div>
+<p>
+	<span style="font-size: 12px"><span style="font-family: tahoma, geneva, sans-serif">1) Rename the existing (old) database by appending &quot;_old&quot; to the name</span></span></p>
+<p>
+	<span style="font-size: 12px"><span style="font-family: tahoma, geneva, sans-serif">2) Script the new database&nbsp;<u>before</u>&nbsp;creating the database in a single .SQL file; make sure to script the file so that the entire file can be executed on the development, test, and/or production systems.</span></span></p>
+<p style="margin-left: 40px">
+	&nbsp;</p>
+<h2>
+	Table SQL script files</h2>
+<p style="margin-left: 40px">
+	<span style="font-size: 12px"><span style="font-family: tahoma, geneva, sans-serif">- After the ANSI_NULLS, etc are turned on add a section to remove any foreign key constraints from the tables</span></span></p>
+<p style="margin-left: 40px">
+	<span style="font-size: 12px"><span style="font-family: tahoma, geneva, sans-serif">- After removing the foreign key constraints add a section to drop the tables you are designing</span></span></p>
+<p style="margin-left: 40px">
+	- Always grant SELECT, UPDATE, INSERT, DELETE permissions on each table to &quot;public&quot;</p>
+<p style="margin-left: 40px">
+	<span style="font-size: 12px"><span style="font-family: tahoma, geneva, sans-serif">- Use IF EXISTS to determine if there is a foreign key constraint or table to drop and/or create</span></span></p>
+<p style="margin-left: 40px">
+	<span style="font-size: 12px"><span style="font-family: tahoma, geneva, sans-serif">- After coding the CREATE TABLE statements add a section to reapply the foreign key constraints</span></span></p>
+<p style="margin-left: 40px">
+	<span style="font-size: 12px"><span style="font-family: tahoma, geneva, sans-serif">- At the end of the file add a section to add any extended property information to support code generation (in the HBCS Tracker project I put these in a separate SQL file, it really should be in the same file as the rest of the table definitions).</span></span></p>
+<p>
+	Stored Procedure script files</p>
+<p style="margin-left: 40px">
+	- Stored procedures names should describe the basic behavior of the procedure.</p>
+<p style="margin-left: 40px">
+	- Always drop any existing stored procedure that begins with &quot;rtv_&quot;, &quot;ins_&quot;, &quot;upd_&quot;, &quot;rpt_&quot;, or &quot;util&quot;</p>
+<p style="margin-left: 40px">
+	- Follow this naming convention for stored procedures:</p>
+<p style="margin-left: 80px">
+	-- &quot;rtv_&quot; for procedures that retrieve data and either return a result set or a single value</p>
+<p style="margin-left: 80px">
+	-- &quot;ins_&quot; for procedures that insert data into a table by accepting one or more incoming parameters and can return a scalar value or result set</p>
+<p style="margin-left: 80px">
+	-- &quot;upd_&quot;&nbsp;for procedures that update data in a table by accepting one or more incoming parameters</p>
+<p style="margin-left: 80px">
+	-- &quot;rpt_&quot;&nbsp;for procedures that retrieve data for the specific purpose of reporting (optional: only use this prefix if it adds clarity to the system as a whole)</p>
+<p style="margin-left: 80px">
+	-- &quot;util_&quot;&nbsp;for procedures that transform, clean up, and/or migrate data - or perform other utility behaviors needed by the system</p>
+<p style="margin-left: 40px">
+	<font class="Apple-style-span" face="tahoma, geneva, sans-serif"><font class="Apple-style-span" face="Arial, Verdana, sans-serif">- Always set EXECUTE permissions on the stored procedure to &quot;public&quot;</font></font></p>

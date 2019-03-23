@@ -1,0 +1,220 @@
+<p>
+	1. Style Guidelines<br />
+	<br />
+	1.1 Tabs &amp; Indenting<br />
+	Tab characters (\0x09) should not be used in code. All indentation should be done with 2 space characters.<br />
+	<br />
+	1.2 Bracing<br />
+	Open braces should always be at the beginning of the line after the statement that begins the block. Contents of the brace should be indented by 4 spaces. For example:<br />
+	if (someExpression)<br />
+	{<br />
+	&nbsp;&nbsp; DoSomething();<br />
+	}<br />
+	else<br />
+	{<br />
+	&nbsp;&nbsp; DoSomethingElse();<br />
+	}<br />
+	<br />
+	&ldquo;case&rdquo; statements should be indented from the switch statement like this:<br />
+	switch (someExpression)&nbsp;<br />
+	{<br />
+	&nbsp;&nbsp; case 0:<br />
+	&nbsp; &nbsp; &nbsp; DoSomething();<br />
+	&nbsp; &nbsp; &nbsp; break;<br />
+	&nbsp;&nbsp; case 1:<br />
+	&nbsp; &nbsp; &nbsp; DoSomethingElse();<br />
+	&nbsp; &nbsp; &nbsp; break;<br />
+	&nbsp;&nbsp; case 2:&nbsp;<br />
+	&nbsp; &nbsp; &nbsp; {<br />
+	&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; int n = 1;<br />
+	&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; DoAnotherThing(n);<br />
+	&nbsp; &nbsp; &nbsp; }<br />
+	&nbsp; &nbsp; &nbsp; break;<br />
+	}<br />
+	<br />
+	1.3 Single line statements<br />
+	Do not use single line statements, for example:<br />
+	<br />
+	&nbsp;&nbsp; public int Bar<br />
+	&nbsp;&nbsp; {<br />
+	&nbsp; &nbsp; &nbsp; get { return bar; }<br />
+	&nbsp; &nbsp; &nbsp; set { bar = value; }<br />
+	&nbsp;&nbsp; }<br />
+	<br />
+	1.4 Commenting<br />
+	Comments should be used to describe intention, algorithmic overview, and/or logical flow.&nbsp; It would be ideal, if from reading the comments alone, someone other than the author could understand a function&rsquo;s intended behavior and general operation. While there are no minimum comment requirements and certainly some very small routines need no commenting at all, it is hoped that most routines will have comments reflecting the programmer&rsquo;s intent and approach.<br />
+	<br />
+	1.4.1 Documentation Comments<br />
+	All methods should use XML doc comments. For internal dev comments, the &lt;devdoc&gt; tag should be used.<br />
+	public class Foo&nbsp;<br />
+	{<br />
+	<br />
+	/// &lt;summary&gt;Public stuff about the method&lt;/summary&gt;<br />
+	/// &lt;param name=&rdquo;bar&rdquo;&gt;What a neat parameter!&lt;/param&gt;<br />
+	/// &lt;devdoc&gt;Cool internal stuff!&lt;/devdoc&gt;<br />
+	///<br />
+	public void MyMethod(int bar) { &hellip; }<br />
+	<br />
+	}<br />
+	<br />
+	1.4.3 Comment Style<br />
+	The // (two slashes) style of comment tags should be used in most situations. Where ever possible, place comments above the code instead of beside it.&nbsp; Here are some examples:<br />
+	// This is required for WebClient to work through the proxy<br />
+	GlobalProxySelection.Select = new WebProxy(&quot;<a href="http://itgproxy/" style="color: rgb(0, 53, 98); text-decoration: none; " target="_blank">http://itgproxy</a>&quot;);<br />
+	<br />
+	<br />
+	// Create object to access Internet resources<br />
+	WebClient myClient = new WebClient();<br />
+	<br />
+	Comments can be placed at the end of a line when space allows:<br />
+	public class SomethingUseful&nbsp;<br />
+	{<br />
+	&nbsp; &nbsp; private int&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; itemHash;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // instance member<br />
+	&nbsp; &nbsp; private static bool&nbsp; hasDoneSomething;&nbsp; &nbsp; // static member<br />
+	}<br />
+	<br />
+	1.5 Spacing<br />
+	Spaces improve readability by decreasing code density. Here are some guidelines for the use of space characters within code:<br />
+	<br />
+	Do use a single space after a comma between function arguments.<br />
+	Right:&nbsp;&nbsp; Console.In.Read(myChar, 0, 1);<br />
+	Wrong: Console.In.Read(myChar,0,1);&nbsp;<br />
+	<br />
+	Do not use a space after the parenthesis and function arguments<br />
+	Right:&nbsp;&nbsp; CreateFoo(myChar, 0, 1)<br />
+	Wrong: CreateFoo( myChar, 0, 1 )<br />
+	<br />
+	Do not use spaces between a function name and parenthesis.<br />
+	Right:&nbsp;&nbsp; CreateFoo()<br />
+	Wrong: CreateFoo ()<br />
+	<br />
+	Do not use spaces inside brackets.<br />
+	Right:&nbsp; &nbsp; x = dataArray[index];<br />
+	Wrong:&nbsp; x = dataArray[ index ];<br />
+	<br />
+	Do use a single space before flow control statements<br />
+	Right:&nbsp;&nbsp; while (x == y)<br />
+	Wrong: while(x==y)<br />
+	<br />
+	Do use a single space before and after comparison operators<br />
+	Right:&nbsp;&nbsp; if (x == y)<br />
+	Wrong: if (x==y)<br />
+	<br />
+	1.6 Naming<br />
+	Follow all .NET Framework Design Guidelines for both internal and external members. Highlights of these include:<br />
+	<br />
+	Do not use Hungarian notation<br />
+	<br />
+	Do use camelCasing for member variables<br />
+	<br />
+	Do use camelCasing for parameters<br />
+	<br />
+	Do use camelCasing for local variables<br />
+	<br />
+	Do use PascalCasing for function, property, event, and class names<br />
+	<br />
+	Do prefix interfaces names with &ldquo;I&rdquo;<br />
+	<br />
+	Do not prefix enums, classes, or delegates with any letter<br />
+	<br />
+	The reasons to extend the public rules (no Hungarian, no prefix for member variables, etc.) is to produce a consistent source code appearance.&nbsp;<br />
+	In addition a goal is to have clean readable source. Code legibility should be a primary goal.<br />
+	<br />
+	1.7 Naming Conventions<br />
+	<br />
+	1.7.1 Interop Classes<br />
+	Classes that are there for interop wrappers (DllImport statements) should follow the naming convention below:<br />
+	<br />
+	NativeMethods &ndash; No suppress unmanaged code attribute, these are methods that can be used anywhere because a stack walk will be performed.<br />
+	<br />
+	UnsafeNativeMethods &ndash; Has suppress unmanaged code attribute. These methods are potentially dangerous and any caller of these methods must do a full security review to ensure that the usage is safe and protected as no stack walk will be performed.<br />
+	<br />
+	SafeNativeMethods &ndash; Has suppress unmanaged code attribute. These methods are safe and can be used fairly safely and the caller isn&rsquo;t needed to do full security reviews even though no stack walk will be performed.<br />
+	<br />
+	class NativeMethods&nbsp;<br />
+	{<br />
+	&nbsp;&nbsp; private NativeMethods() {}<br />
+	<br />
+	<br />
+	&nbsp;&nbsp; [DllImport(&ldquo;user32&rdquo;)]<br />
+	&nbsp;&nbsp; internal static extern void FormatHardDrive(string driveName);<br />
+	}<br />
+	<br />
+	[SuppressUnmanagedCode]<br />
+	class UnsafeNativeMethods&nbsp;<br />
+	{<br />
+	&nbsp;&nbsp; private UnsafeNativeMethods() {}<br />
+	<br />
+	&nbsp;&nbsp; [DllImport(&ldquo;user32&rdquo;)]<br />
+	&nbsp;&nbsp; internal static extern void CreateFile(string fileName);<br />
+	}<br />
+	<br />
+	[SuppressUnmanagedCode]<br />
+	class SafeNativeMethods&nbsp;<br />
+	{<br />
+	&nbsp;&nbsp; private SafeNativeMethods() {}<br />
+	<br />
+	&nbsp;&nbsp; [DllImport(&ldquo;user32&rdquo;)]<br />
+	&nbsp;&nbsp; internal static extern void MessageBox(string text);<br />
+	}<br />
+	<br />
+	All interop classes must be private, and all methods must be internal. In addition a private constructor should be provided to prevent instantiation.<br />
+	<br />
+	1.8 File Organization<br />
+	<br />
+	Source files should contain only one public type, although multiple internal classes are allowed<br />
+	<br />
+	Source files should be given the name of the public class in the file<br />
+	<br />
+	Directory names should follow the namespace for the class<br />
+	For example, I would expect to find the public class &ldquo;System.Windows.Forms.Control&rdquo; in &ldquo;System\Windows\Forms\Control.cs&rdquo;&hellip;<br />
+	Classes member should be alphabetized, and grouped into sections (Fields, Constructors, Properties, Events, Methods, Private interface implementations, Nested types)<br />
+	<br />
+	using System;<br />
+	<br />
+	namespace MyNamespace&nbsp;<br />
+	{<br />
+	&nbsp; ///&lt;summar&gt;<br />
+	&nbsp; ///&lt;/summary&gt;<br />
+	&nbsp; public class MyClass : IFoo&nbsp;<br />
+	&nbsp; {<br />
+	<br />
+	#region Fields<br />
+	<br />
+	&nbsp; &nbsp; &nbsp; private int foo;<br />
+	<br />
+	#endregion<br />
+	<br />
+	#region Ctors<br />
+	<br />
+	&nbsp; &nbsp; &nbsp; public MyClass() { &hellip; }<br />
+	<br />
+	#endregion<br />
+	<br />
+	#region Properties<br />
+	<br />
+	&nbsp; &nbsp; &nbsp; public int Foo { get { &hellip; } set { &hellip; } }<br />
+	<br />
+	#endregion<br />
+	<br />
+	#region Events<br />
+	<br />
+	&nbsp; &nbsp; &nbsp; public event EventHandler FooChanged { add { &hellip; } remove { &hellip; } }<br />
+	<br />
+	#endregion<br />
+	<br />
+	#region Methods<br />
+	<br />
+	&nbsp; &nbsp; &nbsp; internal void DoSomething() { &hellip; }<br />
+	&nbsp; &nbsp; &nbsp; private void FindSomethind() { &hellip; }<br />
+	<br />
+	#endregion<br />
+	<br />
+	#region Nested Types<br />
+	<br />
+	&nbsp;&nbsp; class NestedType { &hellip; }<br />
+	<br />
+	#endregion<br />
+	<br />
+	&nbsp; }<br />
+	}</p>

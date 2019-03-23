@@ -15,5 +15,7 @@ I will also upload a folder for miscellaneous development files for the sql or a
 
 I will be putting the requirements and design documents in the folder called tech docs so everything is in one place. I also put some c# coding references in the references folder, it's all very similar to java.
 
+Brandin read this
+
 
 

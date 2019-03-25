@@ -2,89 +2,97 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
 
 namespace NetQuax.Entities
 {
   public class BillingInformation : IBillingInformation
   {
-        #region fields
-        private int _billingID;
-        private int _cardNumber;
-        private int _expDate;
-        private int _securityCode;
-        private string _cardName;
-        #endregion
-    }
-    public BillingInformation(int billingID)
+    #region fields
+
+    private int _billingInformationId;
+    private string _cardHolder;
+    private string _cardNumber;
+    private string _expDate;
+    private int _securityCode;
+
+    #endregion
+
+    public BillingInformation(int billingId)
     {
-        _billingID = billingID;
-        _cardNumber = null;
-        _expDate = null;
-        _securityCode = null;
-        _cardName = null;
+      _billingInformationId = billingId;
+      _cardNumber = null;
+      _expDate = null;
+      _securityCode = int.MinValue;
+      _cardHolder = null;
     }
-    public int cardNumber
+
+    public string CardHolder
     {
-        get
+      get
+      {
+        if (_cardHolder == null && _billingInformationId > 0)
         {
-            if (_title == null)
-            {
-                //TODO: build out sql connection
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    //TODO: Retrieve matching movie data from db
-                }
-            }
-            //TODO: Replace this with matching data
-            return null;
+          //TODO: build out sql connection
+          using (SqlConnection conn = new SqlConnection())
+          {
+            //TODO: Retrieve matching movie data from db
+          }
         }
+        //TODO: Replace this with matching data
+        return null;
+      }
     }
-    public int expDate
+
+    public string CardNumber
     {
-        get
+      get
+      {
+        if (_cardNumber == null && _billingInformationId > 0)
         {
-            if (_title == null)
-            {
-                //TODO: build out sql connection
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    //TODO: Retrieve matching movie data from db
-                }
-            }
-            //TODO: Replace this with matching data
-            return null;
+          //TODO: build out sql connection
+          using (SqlConnection conn = new SqlConnection())
+          {
+            //TODO: Retrieve matching movie data from db
+          }
         }
+        //TODO: Replace this with matching data
+        return _cardNumber;
+      }
     }
-    public int securityCode
+
+    public string ExpDate
     {
-        get
+      get
+      {
+        if (_expDate == null && _billingInformationId > 0)
         {
-            if (_title == null)
-            {
-                //TODO: build out sql connection
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    //TODO: Retrieve matching movie data from db
-                }
-            }
-            //TODO: Replace this with matching data
-            return null;
+          //TODO: build out sql connection
+          using (SqlConnection conn = new SqlConnection())
+          {
+            //TODO: Retrieve matching movie data from db
+          }
         }
+        //TODO: Replace this with matching data
+        return _expDate;
+      }
     }
-    public string cardName
+
+    public int SecurityCode
     {
-        get
+      get
+      {
+        if (_securityCode <= 0 && _billingInformationId > 0)
         {
-            if (_title == null)
-            {
-                //TODO: build out sql connection
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    //TODO: Retrieve matching movie data from db
-                }
-            }
-            //TODO: Replace this with matching data
-            return null;
+          //TODO: build out sql connection
+          using (SqlConnection conn = new SqlConnection())
+          {
+            //TODO: Retrieve matching movie data from db
+          }
         }
+        //TODO: Replace this with matching data
+        return _securityCode;
+      }
     }
+  }
 }

@@ -1,112 +1,117 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data.SqlClient;
 
 namespace NetQuax.Entities
 {
   public class Address : IAddress
   {
-        #region fields
-        private int _addressID;
-        private string _addressLine1;
-        private string _addressLine2;
-        private string _city;
-        private string _state;
-        private int _zip;
-        private int _userIDFK;
-        private int _addressIDFK;
-        #endregion
+    #region fields
 
-        #region constructor
-        public Address(int addressID)
-        {
-            _addressLine1 = null;
-            _addressLine2 = null;
-            _city = null;
-            _state = null;
-            _zip = null;
+    private int _addressId;
+    private int _addressID;
+    private string _addressLine1;
+    private string _addressLine2;
+    private string _city;
+    private string _state;
+    private int _userId;
+    private string _zip;
 
-        }
-        public string addressLine1
-        {
-            get
-            {
-                if (_title == null)
-                {
-                    //TODO: build out sql connection
-                    using (SqlConnection conn = new SqlConnection())
-                    {
-                        //TODO: Retrieve matching movie data from db
-                    }
-                }
-                //TODO: Replace this with matching data
-                return null;
-            }
-        }
-        public string addressLine2
-        {
-            get
-            {
-                if (_title == null)
-                {
-                    //TODO: build out sql connection
-                    using (SqlConnection conn = new SqlConnection())
-                    {
-                        //TODO: Retrieve matching movie data from db
-                    }
-                }
-                //TODO: Replace this with matching data
-                return null;
-            }
-        }
-        public string city
-        {
-            get
-            {
-                if (_title == null)
-                {
-                    //TODO: build out sql connection
-                    using (SqlConnection conn = new SqlConnection())
-                    {
-                        //TODO: Retrieve matching movie data from db
-                    }
-                }
-                //TODO: Replace this with matching data
-                return null;
-            }
-        }
-        public string state
-        {
-            get
-            {
-                if (_title == null)
-                {
-                    //TODO: build out sql connection
-                    using (SqlConnection conn = new SqlConnection())
-                    {
-                        //TODO: Retrieve matching movie data from db
-                    }
-                }
-                //TODO: Replace this with matching data
-                return null;
-            }
-        }
-        public int zip
-        {
-            get
-            {
-                if (_title == null)
-                {
-                    //TODO: build out sql connection
-                    using (SqlConnection conn = new SqlConnection())
-                    {
-                        //TODO: Retrieve matching movie data from db
-                    }
-                }
-                //TODO: Replace this with matching data
-                return null;
-            }
-        }
+    #endregion
+
+    #region constructor
+
+    public Address(int addressId)
+    {
+      _addressLine1 = null;
+      _addressLine2 = null;
+      _city = null;
+      _state = null;
+      _zip = null;
+      _addressId = addressId;
     }
+    #endregion
+    public string AddressLine1
+    {
+      get
+      {
+        if (_addressLine1 == null && _addressId > 0)
+        {
+          //TODO: build out sql connection
+          using (SqlConnection conn = new SqlConnection())
+          {
+            //TODO: Retrieve matching movie data from db
+          }
+        }
+        //TODO: Replace this with matching data
+        return null;
+      }
+    }
+
+    public string AddressLine2
+    {
+      get
+      {
+        if (_addressLine2 == null && _addressId > 0)
+        {
+          //TODO: build out sql connection
+          using (SqlConnection conn = new SqlConnection())
+          {
+            //TODO: Retrieve matching movie data from db
+          }
+        }
+        //TODO: Replace this with matching data
+        return null;
+      }
+    }
+
+    public string City
+    {
+      get
+      {
+        if (_city == null && _addressId > 0)
+        {
+          //TODO: build out sql connection
+          using (SqlConnection conn = new SqlConnection())
+          {
+            //TODO: Retrieve matching movie data from db
+          }
+        }
+        //TODO: Replace this with matching data
+        return null;
+      }
+    }
+
+    public string State
+    {
+      get
+      {
+        if (_state == null)
+        {
+          //TODO: build out sql connection
+          using (SqlConnection conn = new SqlConnection())
+          {
+            //TODO: Retrieve matching movie data from db
+          }
+        }
+        //TODO: Replace this with matching data
+        return null;
+      }
+    }
+
+    public string Zip
+    {
+      get
+      {
+        if (_zip == null)
+        {
+          //TODO: build out sql connection
+          using (SqlConnection conn = new SqlConnection())
+          {
+            //TODO: Retrieve matching movie data from db
+          }
+        }
+        //TODO: Replace this with matching data
+        return _zip;
+      }
+    }
+  }
 }

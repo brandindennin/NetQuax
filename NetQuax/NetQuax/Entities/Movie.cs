@@ -30,7 +30,7 @@ namespace NetQuax.Entities
     {
       get
       {
-        if(_title == null)
+        if(_title == null && _movieId > 0)
         {
           //TODO: build out sql connection
           using (SqlConnection conn = new SqlConnection())
@@ -47,7 +47,7 @@ namespace NetQuax.Entities
     {
       get
       {
-        if (_director == null)
+        if (_director == null && _movieId > 0)
         {
           //TODO: build out sql connection
           using (SqlConnection conn = new SqlConnection())
@@ -64,7 +64,7 @@ namespace NetQuax.Entities
     {
       get
       {
-        if (_description == null)
+        if (_description == null && _movieId > 0)
         {
           //TODO: build out sql connection
           using (SqlConnection conn = new SqlConnection())

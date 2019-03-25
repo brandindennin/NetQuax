@@ -12,7 +12,9 @@ namespace NetQuax.Entities
     private string _title;
     private string _director;
     private int _movieId;
-    private string _description;    
+    private string _description;
+    private int _price;
+
     #endregion
 
     #region constructor

@@ -109,5 +109,16 @@ namespace NetQuax.Entities
         return null;
       }
     }
+
+    public Address GetAddressByUser(int userId)
+    {
+      return null;
+    }
+
+
+    public BillingInformation GetBillingInformationByUser(int userId)
+    {
+      return null;
+    }
   }
 }

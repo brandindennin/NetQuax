@@ -26,5 +26,10 @@ namespace NetQuax.Controllers
 
       return View();
     }
+
+    public ActionResult AddUser(FormCollection form)
+    {
+      return null;
+    }
   }
 }

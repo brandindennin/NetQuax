@@ -7,7 +7,6 @@ namespace NetQuax.Entities
     #region fields
 
     private int _addressId;
-    private int _addressID;
     private string _addressLine1;
     private string _addressLine2;
     private string _city;
@@ -27,6 +26,7 @@ namespace NetQuax.Entities
       _state = null;
       _zip = null;
       _addressId = addressId;
+      _userId = int.MinValue;
     }
     #endregion
     public string AddressLine1
@@ -42,7 +42,7 @@ namespace NetQuax.Entities
           }
         }
         //TODO: Replace this with matching data
-        return null;
+        return _addressLine1;
       }
     }
 
@@ -59,7 +59,7 @@ namespace NetQuax.Entities
           }
         }
         //TODO: Replace this with matching data
-        return null;
+        return _addressLine2;
       }
     }
 
@@ -76,7 +76,7 @@ namespace NetQuax.Entities
           }
         }
         //TODO: Replace this with matching data
-        return null;
+        return _city;
       }
     }
 
@@ -84,7 +84,7 @@ namespace NetQuax.Entities
     {
       get
       {
-        if (_state == null)
+        if (_state == null && _addressId > 0)
         {
           //TODO: build out sql connection
           using (SqlConnection conn = new SqlConnection())
@@ -93,7 +93,7 @@ namespace NetQuax.Entities
           }
         }
         //TODO: Replace this with matching data
-        return null;
+        return _state;
       }
     }
 
@@ -101,7 +101,7 @@ namespace NetQuax.Entities
     {
       get
       {
-        if (_zip == null)
+        if (_zip == null && _addressId > 0)
         {
           //TODO: build out sql connection
           using (SqlConnection conn = new SqlConnection())

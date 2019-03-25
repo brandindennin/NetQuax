@@ -8,5 +8,7 @@ namespace NetQuax.Entities
 {
   interface IUser
   {
+    Address GetAddressByUser(int userId);
+    BillingInformation GetBillingInformationByUser(int UserId);
   }
 }

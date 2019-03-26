@@ -8,7 +8,7 @@ This must be done in order for the serverside to build
 
 1. SQL Server express and SQL Server Management Studio(SSMS), open SSMS and create a database called NetQuax
 
-1.5. Run NetQuaxTables.sql and NetquaxDataSeed from the additional dev files folder
+ 1.5. Run NetQuaxTables.sql and NetquaxDataSeed from the additional dev files folder
 
 2. Add A C# class called Globals.cs to the entities folder, This will NOT be tracked by source control
 

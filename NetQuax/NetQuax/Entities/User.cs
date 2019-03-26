@@ -57,7 +57,7 @@ namespace NetQuax.Entities
           reader = cmd.ExecuteReader();
 
           // while there's information, read. Since we are only expecting one value back from the database, this is 
-          // just an assignment. The information cmes back serverside as an array with values of each row returned by the db.
+          // just an assignment. The information comes back serverside as an array with values of each column returned by the db.
           // Since we are only selecting the user name the array only contains the username at index 0
           while (reader.Read())
           {

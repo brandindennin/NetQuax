@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NetQuax.Entities;
 
 namespace NetQuax.Controllers
 {
@@ -10,6 +11,7 @@ namespace NetQuax.Controllers
   {
     public ActionResult Index()
     {
+      NetQuax.Entities.User user = new NetQuax.Entities.User(1);
       return View();
     }
 

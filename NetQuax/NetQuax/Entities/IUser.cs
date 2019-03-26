@@ -10,5 +10,6 @@ namespace NetQuax.Entities
   {
     Address GetAddressByUser(int userId);
     BillingInformation GetBillingInformationByUser(int UserId);
+    
   }
 }

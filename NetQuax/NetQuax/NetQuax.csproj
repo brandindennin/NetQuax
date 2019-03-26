@@ -150,6 +150,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\BillingInformation.cs" />
+    <Compile Include="Entities\Globals.cs" />
     <Compile Include="Entities\IAddress.cs" />
     <Compile Include="Entities\IBillingInformation.cs" />
     <Compile Include="Entities\IMovie.cs" />

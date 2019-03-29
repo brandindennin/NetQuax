@@ -7,42 +7,52 @@ namespace NetQuax.Entities
     #region fields
 
     private int _addressId;
-    private string _addressLine1;
-    private string _addressLine2;
+    private string _addressLineOne;
+    private string _addressLineTwo;
     private string _city;
     private string _state;
     private int _userId;
     private string _zip;
 
-    #endregion
+    #endregion fields
 
     #region constructor
 
     public Address(int addressId)
     {
-      _addressLine1 = null;
-      _addressLine2 = null;
+      _addressLineOne = null;
+      _addressLineTwo = null;
       _city = null;
       _state = null;
       _zip = null;
       _addressId = addressId;
       _userId = int.MinValue;
     }
-    #endregion
+
+    #endregion constructor
+
     public string AddressLine1
     {
       get
       {
-        if (_addressLine1 == null && _addressId > 0)
+        if (_addressLineOne == null && _addressId > 0)
         {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT AddressLineOne from ADDRESSES WHERE addressId = {0}", _addressId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _addressLineOne = (string)reader[0];
+            }
+            conn.Close();
           }
-        }        
+        }
         //TODO: Replace this with matching data
-        return _addressLine1;
+        return _addressLineOne;
       }
     }
 
@@ -50,16 +60,24 @@ namespace NetQuax.Entities
     {
       get
       {
-        if (_addressLine2 == null && _addressId > 0)
+        if (_addressLineTwo == null && _addressId > 0)
         {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT AddressLineTwo from ADDRESSES WHERE addressId = {0}", _addressId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _addressLineTwo = (string)reader[0];
+            }
+            conn.Close();
           }
         }
         //TODO: Replace this with matching data
-        return _addressLine2;
+        return _addressLineTwo;
       }
     }
 
@@ -69,13 +87,20 @@ namespace NetQuax.Entities
       {
         if (_city == null && _addressId > 0)
         {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT city from ADDRESSES WHERE addressId = {0}", _addressId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _city= (string)reader[0];
+            }
+            conn.Close();
           }
         }
-        //TODO: Replace this with matching data
         return _city;
       }
     }
@@ -86,13 +111,20 @@ namespace NetQuax.Entities
       {
         if (_state == null && _addressId > 0)
         {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT state from ADDRESSES WHERE addressId = {0}", _addressId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _state = (string)reader[0];
+            }
+            conn.Close();
           }
         }
-        //TODO: Replace this with matching data
         return _state;
       }
     }
@@ -104,9 +136,18 @@ namespace NetQuax.Entities
         if (_zip == null && _addressId > 0)
         {
           //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT zipCode from ADDRESSES WHERE addressId = {0}", _addressId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _zip = (string)reader[0];
+            }
+            conn.Close();
           }
         }
         //TODO: Replace this with matching data

@@ -50,8 +50,7 @@ namespace NetQuax.Entities
             }
             conn.Close();
           }
-        }
-        //TODO: Replace this with matching data
+        }        
         return _addressLineOne;
       }
     }
@@ -75,8 +74,7 @@ namespace NetQuax.Entities
             }
             conn.Close();
           }
-        }
-        //TODO: Replace this with matching data
+        }       
         return _addressLineTwo;
       }
     }
@@ -149,8 +147,7 @@ namespace NetQuax.Entities
             }
             conn.Close();
           }
-        }
-        //TODO: Replace this with matching data
+        }        
         return _zip;
       }
     }

@@ -70,8 +70,7 @@ namespace NetQuax.Entities
             }
             conn.Close();
           }
-        }
-        //TODO: Replace this with matching data
+        }        
         return _director;
       }
     }
@@ -95,8 +94,7 @@ namespace NetQuax.Entities
             }
             conn.Close();
           }
-        }
-        //TODO: Replace this with matching data
+        }        
         return _description;
       }
     }

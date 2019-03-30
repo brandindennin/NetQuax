@@ -32,13 +32,19 @@ namespace NetQuax.Entities
       get
       {
         if (_cardHolder == null && _billingInformationId > 0)
-        {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+        SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT cardHolder from BILLINGINFORMATION WHERE billingInformationId = {0}", _addressId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _zip = (string)reader[0];
+            }
+            conn.Close();
           }
-        }
         //TODO: Replace this with matching data
         return null;
       }
@@ -49,13 +55,19 @@ namespace NetQuax.Entities
       get
       {
         if (_cardNumber == null && _billingInformationId > 0)
-        {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+        SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT cardNumber from BILLINGINFORMATION WHERE billingInformationId = {0}", _addressId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _zip = (string)reader[0];
+            }
+            conn.Close();
           }
-        }
         //TODO: Replace this with matching data
         return _cardNumber;
       }
@@ -66,13 +78,19 @@ namespace NetQuax.Entities
       get
       {
         if (_expDate == null && _billingInformationId > 0)
-        {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+        SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT expDate from BILLINGINFORMATION WHERE billingInformationId = {0}", _addressId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _zip = (string)reader[0];
+            }
+            conn.Close();
           }
-        }
         //TODO: Replace this with matching data
         return _expDate;
       }
@@ -83,13 +101,19 @@ namespace NetQuax.Entities
       get
       {
         if (_securityCode <= 0 && _billingInformationId > 0)
-        {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+        SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT securityCode from BILLINGINFORMATION WHERE billingInformationId = {0}", _addressId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _zip = (string)reader[0];
+            }
+            conn.Close();
           }
-        }
         //TODO: Replace this with matching data
         return _securityCode;
       }

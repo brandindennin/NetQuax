@@ -270,3 +270,6 @@ C:\NetQuax\NetQuax\NetQuax\NetQuax\bin\Microsoft.AI.WindowsServer.xml
 C:\NetQuax\NetQuax\NetQuax\NetQuax\bin\Microsoft.AI.Web.xml
 C:\NetQuax\NetQuax\NetQuax\NetQuax\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\NetQuax\NetQuax\NetQuax\NetQuax\obj\Debug\NetQuax.csproj.CopyComplete
+C:\New folder\NetQuax\NetQuax\NetQuax\obj\Debug\NetQuax.csprojResolveAssemblyReference.cache
+C:\New folder\NetQuax\NetQuax\NetQuax\obj\Debug\NetQuax.dll
+C:\New folder\NetQuax\NetQuax\NetQuax\obj\Debug\NetQuax.pdb

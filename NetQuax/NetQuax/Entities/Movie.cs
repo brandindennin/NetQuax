@@ -24,6 +24,7 @@ namespace NetQuax.Entities
       _title = null;
       _director = null;
       _description = null;
+      //And many more
     }
 
     public string Title
@@ -32,14 +33,21 @@ namespace NetQuax.Entities
       {
         if(_title == null && _movieId > 0)
         {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT nameOfMovie from MOVIES WHERE movieId = {0}", _movieId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _title = (string)reader[0];
+            }
+            conn.Close();
           }
         }
-        //TODO: Replace this with matching data
-        return null;
+        return _title;
       }
     }
 
@@ -49,14 +57,21 @@ namespace NetQuax.Entities
       {
         if (_director == null && _movieId > 0)
         {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT director from MOVIES WHERE movieId = {0}", _movieId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _director = (string)reader[0];
+            }
+            conn.Close();
           }
-        }
-        //TODO: Replace this with matching data
-        return null;
+        }        
+        return _director;
       }
     }
 
@@ -66,14 +81,21 @@ namespace NetQuax.Entities
       {
         if (_description == null && _movieId > 0)
         {
-          //TODO: build out sql connection
-          using (SqlConnection conn = new SqlConnection())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            //TODO: Retrieve matching movie data from db
+            conn.Open();
+            string queryString = string.Format("SELECT Description from MOVIES WHERE movieId = {0}", _movieId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _description = (string)reader[0];
+            }
+            conn.Close();
           }
-        }
-        //TODO: Replace this with matching data
-        return null;
+        }        
+        return _description;
       }
     }
     #endregion

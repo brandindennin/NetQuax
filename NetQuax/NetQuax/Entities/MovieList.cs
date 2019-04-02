@@ -14,5 +14,13 @@ namespace NetQuax.Entities
     {
       _allMovies = new List<Movie>();
     }
+
+    public List<Movie> AllMovies
+    {
+      get
+      {
+        return null;
+      }
+    }
   }
 }

@@ -18,24 +18,13 @@ namespace NetQuax.Entities
     public User(int userId)
     {
       _userId = userId;
-      _username = username(userId);
-      _password = password(userId);
-      _userType = userType(userId);
-     // _activeMovies = activeMovies(userId);
-      _addressId = addressId(userId);
     }
-
-
-
-
-
 
     /* RETRIEVING THE USERNAME FROM THE DATABASE */
 
-    public string username(int _userId)
+    public string UserName
     {
-      // if the userId is valid, continue
-      if (_userId > 0)
+      get
       {
         //use the SQL data reader class to read data from sql server
         SqlDataReader reader = null;
@@ -56,7 +45,7 @@ namespace NetQuax.Entities
           // send the command to the database
           reader = cmd.ExecuteReader();
 
-          // while there's information, read. Since we are only expecting one value back from the database, this is 
+          // while there's information, read. Since we are only expecting one value back from the database, this is
           // just an assignment. The information comes back serverside as an array with values of each column returned by the db.
           // Since we are only selecting the user name the array only contains the username at index 0
           while (reader.Read())
@@ -65,103 +54,99 @@ namespace NetQuax.Entities
           }
 
           //close the connection
-          conn.Close();          
-        }       
-      }
-      //return the retrieved username;
-      return _username;
-    }
-
-
-
-
-
-
-    public long addressId(int _userId)
-    {
-      if ( _userId > 0)
-      {
-        SqlDataReader reader = null;
-        //TODO: build out sql connection
-        using (SqlConnection conn = new SqlConnection(Globals.connectionString))
-        {
-          conn.Open();
-          string queryString = string.Format("SELECT userAddressId from USERS WHERE userId = {0}", _userId);
-          SqlCommand cmd = new SqlCommand(queryString, conn);
-          reader = cmd.ExecuteReader();
-          while (reader.Read())
-          {
-            _addressId = (long)reader[0];
-          }
           conn.Close();
         }
+        //return matching data
+        return _username;
       }
-      //TODO: Replace this with matching data
-      return _addressId;
     }
 
-    public string password(int _userId)
+    public long AddressId
     {
-      if (_userId > 0)
+      get
       {
-        SqlDataReader reader = null;
-        using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+        if (_userId > 0)
         {
-          conn.Open();
-          string queryString = string.Format("SELECT userPassword from USERS WHERE userId = {0}", _userId);
-          SqlCommand cmd = new SqlCommand(queryString, conn);
-          reader = cmd.ExecuteReader();
-          while (reader.Read())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            _password = (string)reader[0];
+            conn.Open();
+            string queryString = string.Format("SELECT userAddressId from USERS WHERE userId = {0}", _userId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _addressId = (long)reader[0];
+            }
+            conn.Close();
           }
-          conn.Close();
         }
+        return _addressId;
       }
-      //TODO: Replace this with matching data
-      return _password ;
     }
 
- 
-
-    public long userType(int _userId)
+    public string Password
     {
-      if (_userId > 0)
+      get
       {
-        SqlDataReader reader = null;
-        //TODO: build out sql connection
-        using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+        if (_userId > 0)
         {
-          conn.Open();
-          string queryString = string.Format("SELECT userTypeId from USERS WHERE userId = {0}", _userId);
-          SqlCommand cmd = new SqlCommand(queryString, conn);
-          reader = cmd.ExecuteReader();
-          while (reader.Read())
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {
-            _userType = (long)reader[0];
+            conn.Open();
+            string queryString = string.Format("SELECT userPassword from USERS WHERE userId = {0}", _userId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _password = (string)reader[0];
+            }
+            conn.Close();
           }
-          conn.Close();
         }
+        return _password;
       }
-      //TODO: Replace this with matching data
-      return _userType;
+    }
+    public long UserType
+    {
+      get
+      {
+        if (_userId > 0)
+        {
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+          {
+            conn.Open();
+            string queryString = string.Format("SELECT userTypeId from USERS WHERE userId = {0}", _userId);
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              _userType = (long)reader[0];
+            }
+            conn.Close();
+          }
+        }
+        return _userType;
+      }
     }
 
-    /*public int activeMovies(int _userId)
+    // I don't remember why I skipped this one, but I'm too tired to figure it out right now
+    public int activeMovies
     {
-      if (_activeMovies <= 0 && _userId > 0)
+      get
       {
-        //TODO: build out sql connection
-        SqlDataReader reader = null;
-        using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+        if (_activeMovies <= 0 && _userId > 0)
         {
-          //TODO: Retrieve matching movie data from db
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+          {
+          }
         }
+        return 1;
       }
-      //TODO: Replace this with matching data
-      return 1;
-    }*/
-
+    }
 
     public Address GetAddressByUser(int userId)
     {

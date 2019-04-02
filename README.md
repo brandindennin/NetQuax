@@ -24,7 +24,7 @@ This must be done in order for the serverside to build
 
 8. Assign the connectionString variable in Globals.cs to the value you just copied
 
-9. after the Data Source section, add a new section the days Initial Catalog=NetQuax
+9. after the Data Source section, add a new section that says Initial Catalog=NetQuax
 
 10. the final connection string should look  ~ like this
 

@@ -45,7 +45,7 @@ I will be uploading the Visual Studio solution either tonight or tomorrow, I'll 
 
 I will also upload a folder for miscellaneous development files for the sql or any supporting documents.
 
-I will be putting the requirements and design documents in the folder called tech docs so everything is in one place. I also put some c# coding references in the references folder, it's all very similar to java.
+I wil be putting the requirements and design documents in the folder called tech docs so everything is in one place. I also put some c# coding references in the references folder, it's all very similar to java.
 
 
 

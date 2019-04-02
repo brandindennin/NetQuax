@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NetQuax.Entities;
-
+using System.Data.SqlClient;
 namespace NetQuax.Controllers
 {
   public class HomeController : Controller
@@ -76,9 +76,20 @@ namespace NetQuax.Controllers
         //TODO: Error
       }
       if(!errorFlag)
-      { 
+      {           
         //Session["User"] = newUser;
-
+          /*using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+          {
+              conn.Open();
+              string cmdString = string.Format("INSERT INTO USERS VALUES (blah blah blah)", _billingInformationId);
+              SqlCommand cmd = new SqlCommand(queryString, conn);
+              reader = cmd.ExecuteReader();
+              while (reader.Read())
+              {
+                  _cardHolder = (string)reader[0];
+              }
+              conn.Close();
+          }*/
         //TODO: return home view 
       }
       else
@@ -151,11 +162,6 @@ namespace NetQuax.Controllers
         }
         if (!errorFlag)
         {
-
-
-
-
-
             //TODO: Implement this thing
             //NetQuax.Entities.IUser user = NetQuax.Entities.User.RetrieveByUserName(detectedUserName);
         }

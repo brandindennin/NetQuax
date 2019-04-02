@@ -1,29 +1,41 @@
-﻿body {
-    font-family: Georgia, "Times New Roman", Times, serif;
+﻿#nav-wrapper {
+    margin-right: auto; /* 1 */
+    margin-left: auto; /* 1 */
+    max-width: 650px; /* 2 */
 }
-#wrapper {
-    margin-right: auto; 
-    margin-left: auto; 
-    max-width: 960px; 
-    padding-right: 100px; 
-    padding-left: 100px; 
-}
-
 .top-header {
     background-image: url("../images/netquaximagev3.jpg");
     width: 653px;
     height: 176px;
-    background-repeat: no-repeat;
-    
-}
-li {
-    float: left;
-   list-style-type: none;
-}
-ul a {
-   
     display: block;
-    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+}
+.top-nav {
+    margin: 0;
+    width: 100%;
     padding: 5px;
+    height: 45px;
     
+}
+.search{
+    float: right;
+}
+ul {
+    list-style-type: none;
+   
+}
+li{
+    padding: 7px;
+}
+a:link {
+   text-decoration: none;
+   color: black;
+}
+a:hover{
+    color: blue;
+}
+a:active{
+    color:blue;
 }

@@ -1,2 +1,4 @@
 *.lock
+*.suo
+*.ide-shm
 Globals.cs

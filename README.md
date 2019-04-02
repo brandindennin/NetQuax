@@ -1,6 +1,38 @@
 # NetQuax
 Spring 2019
-d
+
+
+#Branching git
+
+1. Go to the repository homepage
+
+2. Click on the branch button, type in a name
+
+3. click create branch
+
+4. In your project, open git bash
+
+5. Type git checkout -b yourBranchName
+
+6. make changes
+
+7. add and commit, save as before
+
+8. for pushing type git push -u origin yourBranchName 
+
+8.5. Once you push,  do not make any more changes to that branch until code is reviewed
+
+9. if git says something about upstream, just follow what it says, I don't remember the exact message
+
+10. go back to github, it should say compare and pull request on the homepage, click that
+
+11. On the right hand side of the page there should be a reviewers area, code MUST be reviewd before it is committed to 
+    master, assign the review to me for now.
+
+12. The reviewer will confirm there are no errors and click merge with master, and delete the branch.
+
+
+
 
 # Connecting Your Project to the Database
 

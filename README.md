@@ -2,7 +2,7 @@
 Spring 2019
 
 
-#Branching git
+# Branching git
 
 1. Go to the repository homepage
 
@@ -22,12 +22,12 @@ Spring 2019
 
 8.5. Once you push,  do not make any more changes to that branch until code is reviewed
 
-9. if git says something about upstream, just follow what it says, I don't remember the exact message
+9. if git says something about upstream, just follow what it says, I don't remember the exact message it's something like
 
 10. go back to github, it should say compare and pull request on the homepage, click that
 
 11. On the right hand side of the page there should be a reviewers area, code MUST be reviewd before it is committed to 
-    master, assign the review to me for now.
+    master, assign the review to me for now. Then click create pull request.
 
 12. The reviewer will confirm there are no errors and click merge with master, and delete the branch.
 

@@ -1,0 +1,7 @@
+*.lock
+*.suo
+*.ide-shm
+Globals.cs
+
+*.DS_STORE
+.vs/

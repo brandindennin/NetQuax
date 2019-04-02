@@ -2,4 +2,6 @@
 *.suo
 *.ide-shm
 Globals.cs
-
+.vs/
+.bin/
+.obj/

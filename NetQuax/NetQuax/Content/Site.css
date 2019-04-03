@@ -1,7 +1,7 @@
 ﻿#nav-wrapper {
-    margin-right: auto; /* 1 */
-    margin-left: auto; /* 1 */
-    max-width: 650px; /* 2 */
+    margin-right: auto; 
+    margin-left: auto; 
+    max-width: 860px; 
 }
 .top-header {
     background-image: url("../images/netquaximagev3.jpg");
@@ -12,6 +12,7 @@
     margin-right: auto;
     background-repeat: no-repeat;
 }
+
 .top-nav {
     margin: 0;
     width: 100%;
@@ -38,4 +39,7 @@ a:hover{
 }
 a:active{
     color:blue;
+}
+.netquax-navbar{
+    text-align: right;
 }

@@ -19,7 +19,7 @@ namespace NetQuax.Entities
     {
       _userId = userId;
     }
-
+    //test update
     /* RETRIEVING THE USERNAME FROM THE DATABASE */
 
     public string UserName

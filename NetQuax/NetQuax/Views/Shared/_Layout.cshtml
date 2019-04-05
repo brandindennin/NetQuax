@@ -8,52 +8,24 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div id="nav-wrapper">
-        <div class="top-header"></div>
-        <div class="top-nav">
-    </div>
-            <div class="search">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Browse
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Sort</a>
-                                    <a class="dropdown-item" href="#">Another sort</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Some other sort</a>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <form class="form-inline my-2 my-lg-0">
-
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                    </div>
-                </nav>
-            </div>
-        </div>
-
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - NetQuax</p>
-            </footer>
-        </div>
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+    <div class="top-header"></div>
     
+    <div class="container body-content">
+        <div class="row" style="margin-bottom:10px;">
+            <div class="col-sm-2"><p style="padding: 10px; margin-top:15px;">Homes</p></div>
+            <div class="col-sm-2"><p style="padding: 10px; margin-top:15px;">Browse</div>
+            <div class="col-sm-6 netquax-navbar"><p style="display:inline-block; padding:1px;"></p><input style="display:inline-block;float:right; " type="text" class="form-control" /></div>
+        </div>
+        <hr />
+        @RenderBody()
+        <footer>
+            <p>&copy; @DateTime.Now.Year - NetQuax</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>

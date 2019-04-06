@@ -13,33 +13,4 @@
     background-repeat: no-repeat;
 }
 
-.top-nav {
-    margin: 0;
-    width: 100%;
-    padding: 5px;
-    height: 45px;
-    
-}
-.search{
-    float: right;
-}
-ul {
-    list-style-type: none;
-   
-}
-li{
-    padding: 7px;
-}
-a:link {
-   text-decoration: none;
-   color: black;
-}
-a:hover{
-    color: blue;
-}
-a:active{
-    color:blue;
-}
-.netquax-navbar{
-    text-align: right;
-}
+

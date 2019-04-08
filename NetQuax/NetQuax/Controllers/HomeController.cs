@@ -30,6 +30,10 @@ namespace NetQuax.Controllers
       return View();
     }
 
+    public ActionResult Browse()
+    {
+      return View("BeginBrowsePage");
+    }
 
     /// <summary cref="User" >">
     /// Adds A new user based upon inputs from add user form

@@ -13,7 +13,7 @@ namespace NetQuax.Controllers
     {
       //NetQuax.Entities.User user = new NetQuax.Entities.User(1);
      
-      return View();
+      return View("Index", new NetQuax.Models.HomePageModel());
     }
 
     public ActionResult About()

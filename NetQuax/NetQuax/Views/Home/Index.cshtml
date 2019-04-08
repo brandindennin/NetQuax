@@ -6,15 +6,47 @@
 @*A comment in Razor syntax*@
 
 <div class="row movie-row" id="home-Featured">
-    <div class="col-sm-4">1</div>
-    <div class="col-sm-4">2</div>
-    <div class="col-sm-4">3</div>
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-4"><p><b>Featured Movies:</b></p></div>
+      <div class="col-sm-8"></div>
+    </div>
+    <div class="row">
+      @{ 
+        if(Model != null)
+        {
+          foreach (NetQuax.Entities.Movie movie in Model.FeaturedMovies)
+          {
+            <div id="movie-@movie.MovieId-@movie.Director" class="col-sm-4 movie-container">
+              <img src="~/images/movie-placeholder.jpg" class="movie-image"/>@*Populate this with image from database once we get it*@
+            </div>
+          }
+        }
+      }
+    </div>
+  </div>
 </div>
 
 <div class="row movie-row" id="home-Sale">
-    <div class="col-sm-4">1</div>
-    <div class="col-sm-4">2</div>
-    <div class="col-sm-4">3</div>
+   <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-4"><p><b>On Sale Now:</b></p></div>
+      <div class="col-sm-8"></div>
+    </div>
+    <div class="row">
+      @{ 
+        if(Model != null)
+        {
+          foreach (NetQuax.Entities.Movie movie in Model.SaleMovies)
+          {
+            <div id="movie-@movie.MovieId-@movie.Director" class="col-sm-4 movie-container">
+              <img src="~/images/movie-placeholder.jpg" class="movie-image" /> @*Populate this with image from database once we get it*@
+            </div>
+          }
+        }
+      }
+    </div>
+  </div>
 </div>
 
 <div class="row movie-row" id="home-Chosen">
@@ -25,12 +57,12 @@
     </div>
     <div class="row">
       @{ 
-        if(Model != null && Model.ChosenMovies != null)
+        if(Model != null)
         {
           foreach (NetQuax.Entities.Movie movie in Model.ChosenMovies)
           {
             <div id="movie-@movie.MovieId-@movie.Director" class="col-sm-4 movie-container">
-              <img src=""> @*Populate this with image from database once we get it*@
+              <img src="~/images/movie-placeholder.jpg" class="movie-image" /> @*Populate this with image from database once we get it*@
             </div>
           }
         }

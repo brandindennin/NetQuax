@@ -98,6 +98,13 @@ namespace NetQuax.Entities
         return _description;
       }
     }
+    public long MovieId
+    {
+      get
+      {
+        return _movieId;
+      }
+    }
     #endregion
   }
 }

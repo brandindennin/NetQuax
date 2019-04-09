@@ -14,21 +14,18 @@
     </button>
     <div id="myDropdown" class="dropdown-content">
    		<a id="myLink1" title="Click to do something" href="#" onclick="myFunction('Decade');return false;">By Decade</a>
-        <a id="myLink2" title="Click to do something" href="PleaseEnableJavascript.html" onclick="myFunction('Price');return false;">By Price</a>
-        <a id="myLink3" title="Click to do something" href="PleaseEnableJavascript.html" onclick="myFunction('CustomerReview');return false;">By Customer Review</a>
+      <a id="myLink2" title="Click to do something" href="PleaseEnableJavascript.html" onclick="myFunction('Price');return false;">By Price</a>
+      <a id="myLink3" title="Click to do something" href="PleaseEnableJavascript.html" onclick="myFunction('CustomerReview');return false;">By Customer Review</a>
     </div>
   </div> 
 </div>
-
 <script>
-function myFunction(choice) {
-	document.getElementById("myDropdown").style.display="";
-	document.getElementById("myDropdown").removeAttribute("style");
-  	document.getElementById("myMainBody").innerHTML = "Display " + choice + " information here";
-	document.getElementById("myMainBody").innerHTML = '<object type="text/html" data="' + choice + '.html" width="800px" height="600px" style="overflow:auto;border:5px ridge blue"> </object>'
-}
-
-
+    function myFunction(choice) {
+      document.getElementById("myDropdown").style.display="";
+      document.getElementById("myDropdown").removeAttribute("style");
+      document.getElementById("myMainBody").innerHTML = "Display " + choice + " information here";
+      document.getElementById("myMainBody").innerHTML = '<object type="text/html" data="' + choice + '.html" width="800px" height="600px" style="overflow:auto;border:5px ridge blue"> </object>'
+    }
 </script>
 <div class="mainbody" id="myMainBody">
 

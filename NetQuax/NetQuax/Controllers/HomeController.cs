@@ -100,7 +100,7 @@ namespace NetQuax.Controllers
       {
         //TODO: Return Error View
       }
-      return null;
+      return View("Index", new NetQuax.Models.HomePageModel());
     }
     // Method to be called when user checks out a movie
     public ActionResult CheckoutMovie(FormCollection form)

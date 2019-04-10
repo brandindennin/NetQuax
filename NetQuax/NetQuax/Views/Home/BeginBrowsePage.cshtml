@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <div class="dropdown">
+    <button class="dropbtn">Browse   
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div id="myDropdown" class="dropdown-content">
+   		<a id="myLink1" title="Click to do something" href="#" onclick="myFunction('Decade');return false;">By Decade</a>
+      <a id="myLink2" title="Click to do something" href="PleaseEnableJavascript.html" onclick="myFunction('Price');return false;">By Price</a>
+      <a id="myLink3" title="Click to do something" href="PleaseEnableJavascript.html" onclick="myFunction('CustomerReview');return false;">By Customer Review</a>
+    </div>
+  </div> 
+</div>
+<script>
+    function myFunction(choice) {
+      document.getElementById("myDropdown").style.display="";
+      document.getElementById("myDropdown").removeAttribute("style");
+      document.getElementById("myMainBody").innerHTML = "Display " + choice + " information here";
+      document.getElementById("myMainBody").innerHTML = '<object type="text/html" data="' + choice + '.html" width="800px" height="600px" style="overflow:auto;border:5px ridge blue"> </object>'
+    }
+</script>
+<div class="mainbody" id="myMainBody">
+
+</div>
+</body>
+</html>

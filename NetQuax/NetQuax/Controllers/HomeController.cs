@@ -13,7 +13,7 @@ namespace NetQuax.Controllers
     {
       //NetQuax.Entities.User user = new NetQuax.Entities.User(1);
      
-      return View();
+      return View("Index", new NetQuax.Models.HomePageModel());
     }
 
     public ActionResult About()
@@ -30,6 +30,10 @@ namespace NetQuax.Controllers
       return View();
     }
 
+    public ActionResult Browse()
+    {
+      return View("BeginBrowsePage");
+    }
 
     /// <summary cref="User" >">
     /// Adds A new user based upon inputs from add user form
@@ -96,7 +100,7 @@ namespace NetQuax.Controllers
       {
         //TODO: Return Error View
       }
-      return null;
+      return View("Index", new NetQuax.Models.HomePageModel());
     }
     // Method to be called when user checks out a movie
     public ActionResult CheckoutMovie(FormCollection form)

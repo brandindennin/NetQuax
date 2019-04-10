@@ -20,9 +20,9 @@ namespace NetQuax.Models
     private List<Movie> _chosenMovies;
     public HomePageModel()
     {
-      _featuredMovies = null;
-      _saleMovies = null;
-      _chosenMovies = null;
+      _featuredMovies = new List<Movie>();
+      _saleMovies = new List<Movie>();
+      _chosenMovies = new List<Movie>();
     }
 
     //This will not work until we get the rest of the movies into the database
@@ -30,16 +30,13 @@ namespace NetQuax.Models
     {
       get
       {
-        /*for(int i = 1; i < 4; i++)
+        for(int i = 1; i < 4; i++)
         {
           // get the first 3 movies from the database
           NetQuax.Entities.Movie movie = new NetQuax.Entities.Movie(i);
-          _featuredMovies.Add(movie);
-
-          
+          _featuredMovies.Add(movie);          
         }
-        return _featuredMovies;*/
-        return null;
+        return _featuredMovies;
       }
     }
 
@@ -47,14 +44,14 @@ namespace NetQuax.Models
     {
       get
       {
-        /*for(int i = 4; i < 8; i++ )
+        for(int i = 4; i < 7; i++ )
         {
           //Get the second three Movies
           NetQuax.Entities.Movie movie = new NetQuax.Entities.Movie(i);
           _saleMovies.Add(movie);
         }
-        return _saleMovies*/
-        return null;
+        return _saleMovies;
+        
       }
     }
 
@@ -62,14 +59,17 @@ namespace NetQuax.Models
     {
       get
       {
-        /*for(int i = 8; i < 12; i++ )
+        for(int i = 7; i < 10; i++ )
         {
           //Get the third three Movies
+          
           NetQuax.Entities.Movie movie = new NetQuax.Entities.Movie(i);
-          _chosenMovies.Add(movie);
+          if (!(_chosenMovies.Contains(movie)))
+          {
+            _chosenMovies.Add(movie);
+          }
         }
-        return _chosenMovies*/
-        return null;
+        return _chosenMovies;
       }
     }
 

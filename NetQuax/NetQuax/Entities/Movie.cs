@@ -14,7 +14,10 @@ namespace NetQuax.Entities
     private int _movieId;
     private string _description;
     private int _price;
-
+    private float _rating;
+    private string _actor;
+    private string _mode;
+    private int _yearReleased;
     #endregion
 
     #region constructor
@@ -24,6 +27,11 @@ namespace NetQuax.Entities
       _title = null;
       _director = null;
       _description = null;
+      _price = null;
+      _rating = null;
+      _actor = null;
+      _mode = null;
+      _yearReleased = null;
       //And many more
     }
 
@@ -108,3 +116,119 @@ namespace NetQuax.Entities
     #endregion
   }
 }
+public string Actor
+{
+    get
+    {
+        if (_title == null && _movieId > 0)
+        {
+            SqlDataReader reader = null;
+            using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+            {
+                conn.Open();
+                string queryString = string.Format("SELECT actors from MOVIES WHERE movieId = {0}", _movieId);
+                SqlCommand cmd = new SqlCommand(queryString, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    _title = (string)reader[0];
+                }
+                conn.Close();
+            }
+        }
+        return _title;
+    }
+}
+public float Rating
+{
+    get
+    {
+        if (_title == null && _movieId > 0)
+        {
+            SqlDataReader reader = null;
+            using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+            {
+                conn.Open();
+                string queryString = string.Format("SELECT rating from MOVIES WHERE movieId = {0}", _movieId);
+                SqlCommand cmd = new SqlCommand(queryString, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    _title = (string)reader[0];
+                }
+                conn.Close();
+            }
+        }
+        return _title;
+    }
+}
+public int Price
+{
+    get
+    {
+        if (_title == null && _movieId > 0)
+        {
+            SqlDataReader reader = null;
+            using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+            {
+                conn.Open();
+                string queryString = string.Format("SELECT price from MOVIES WHERE movieId = {0}", _movieId);
+                SqlCommand cmd = new SqlCommand(queryString, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    _title = (string)reader[0];
+                }
+                conn.Close();
+            }
+        }
+        return _title;
+    }
+}
+public string YearReleased
+{
+    get
+    {
+        if (_title == null && _movieId > 0)
+        {
+            SqlDataReader reader = null;
+            using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+            {
+                conn.Open();
+                string queryString = string.Format("SELECT yearReleased from MOVIES WHERE movieId = {0}", _movieId);
+                SqlCommand cmd = new SqlCommand(queryString, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    _title = (string)reader[0];
+                }
+                conn.Close();
+            }
+        }
+        return _title;
+    }
+}
+public string Mode
+{
+    get
+    {
+        if (_title == null && _movieId > 0)
+        {
+            SqlDataReader reader = null;
+            using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+            {
+                conn.Open();
+                string queryString = string.Format("SELECT movieMode from MOVIES WHERE movieId = {0}", _movieId);
+                SqlCommand cmd = new SqlCommand(queryString, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    _title = (string)reader[0];
+                }
+                conn.Close();
+            }
+        }
+        return _title;
+    }
+}
+

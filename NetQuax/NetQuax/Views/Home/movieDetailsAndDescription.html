@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="Netquax" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+ .column {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>Gladiator</h2>
+</header>
+  
+<article>
+	<div class="column" style="background-color:#aaa;">
+		 <p style="float: left;"><img src="movie-placeholder.jpg" alt="MovieImage"></p>
+		 <p><i> Description of Movie </i></p>
+	</div>
+
+	<div class="column" style="background-color:#FFF380;">
+		<p>Director</p>
+		<p>Genre</p>
+		<p>Actors</p>
+	</div>
+	<div class="column" style="background-color:#FFF380;">
+		<p>Year</p>
+		<p>Customer Rating</p>
+		<p>HD</p>
+	</div>
+	<div class="column" style="background-color:#FFF380;">
+		<p>$2.99</p>
+		<p>Hatchling</p>
+	</div>        
+</article>
+</body>
+</html>

@@ -18,6 +18,7 @@
         }))
         {
         <div class="row">
+          @*USER DETAILS*@
           <div class="col-sm-12">
             <label for="addUser-Username">User name:</label>
             <input class="margin-bottom-10 form-control" id="addUser-Username" name="Username" type="text" value="" />
@@ -30,22 +31,62 @@
             <label for="addUser-PasswordConfirmation">Password Confirmation</label>
             <input type="text" id="addUser-PasswordConfirmation" class="margin-bottom-10 form-control" name="PasswordConfirmation" />
           </div>
+          @*Address Details*@
           <div class="col-sm-12">
-            <label  for="addUser-UserType">Plan:</label>
-            <select id="addUser-UserType" class="margin-bottom-10 form-control" name="UserType">
-              <option value="1">Hatchling</option>
-              <option selected value="2">Full-Grown Duck</option>
-              <option value="1">Mother Duck</option>
+            <label for="addUser-AddressLine1">Address Line 1:</label>
+            <input id="addUser-AddressLine1" class="margin-bottom-10 form-control" name="AddressLine1" type="text" value="" />
+          </div>
+          <div class="col-sm-12">
+            <label for="addUser-AddressLine2">Address Line 2:</label>
+            <input type="text" id="addUSer-AddressLine2" class="form-control margin-bottom-10" name="AddressLine2" value="" />
+          </div>
+          <div class="col-sm-12">
+            <label for="addUser-City">City:</label>
+            <input id="addUser-City" type="text" name="City" value="" class="form-control margin-bottom-10" />
+          </div>
+          <div class="col-sm-12">
+            <label for="addUser-State">State:</label>
+            <input type="text" value="" name="State" id="addUser-State" class="form-control margin-bottom-10" />
+          </div>
+          <div class="col-sm-12">
+            <label for="addUser-Zip">Zip Code:</label>
+            <input type="text" id="addUser-Zip" value="" name="Zip" class="form-control margin-bottom-10" />
+          </div>
+        </div>
+          
+          @*Billing Details*@
+        <div class="row" style="margin-bottom: 10px;">
+          <div class="col-sm-12">
+            <label>Plan Type</label>
+            <select class="form-control margin-bottom-10" onchange="ShowBillingInfo(this)">
+              <option value="1">Hatchling (free)</option>
+              <option value="2">Full-Grown Duck ($5.99) </option>
+              <option value="3">Mother Duck ($10.99) </option>
             </select>
           </div>
-          <!--<div class="col-sm-12">
-            <label></label>
-            <input type="" value="" />
+        </div>
+        <div id="billingInfoRow" class="row" style="display:none;">
+          <div class="col-sm-12">
+            <label for="addUser-CCIssuer">Card Issuer</label>
+            <select id="addUser-Issuer" class="form-control margin-bottom-10" name="Issuer">
+              <option value="visa">Visa</option>
+              <option value="mastercard">MasterCard</option>
+              <option value="discover">Discover</option>
+              <option value="americanExpress">Amercan Express</option>
+            </select>
           </div>
           <div class="col-sm-12">
-            <label></label>
-            <input type="" value="" />
-          </div>-->
+            <label>Name On Card</label>
+            <input type="text" value="" name="nameOnCard" class="form-control margin-bottom-10" />
+          </div>
+          <div class="col-sm-12">
+            <label>Card Number:</label>
+            <input type="text" value="" id="addUser-cardNumber" name="CardNumber" class="form-control margin-bottom-10" />
+          </div>
+          <div class="col-sm-12">
+            <label>CVV:</label>
+            <input type="text" value="" id="addUser-CVV" name="CVV" class="form-control margin-bottom-10" />
+          </div>
         </div>
         }
 

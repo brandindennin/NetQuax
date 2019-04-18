@@ -43,6 +43,15 @@ namespace NetQuax.Controllers
       string detectedUserName = string.Empty;
       string detectedPassword = string.Empty;
       string detectedPasswordConfirmation = string.Empty;
+      string detectedAddressLine1 = string.Empty;
+      string detectedAddressLine2 = string.Empty;
+      string detectedZip = string.Empty;
+      string detectedState = string.Empty;
+      string detectedCity = string.Empty;
+      string detectedCardIssuer = string.Empty;
+      string detectedCardName = string.Empty;
+      string detectedCardNumber = string.Empty;
+      string detectedCVV = string.Empty;
       string errorMessage = string.Empty;
       bool errorFlag = false;
       if(form != null)
@@ -103,9 +112,9 @@ namespace NetQuax.Controllers
       return View("Index", new NetQuax.Models.HomePageModel());
     }
     // Method to be called when user checks out a movie
-    public ActionResult CheckoutMovie(FormCollection form)
+    public ActionResult Checkout(FormCollection form)
     {
-        string errorMEssage = string.Empty;
+        string errorMessage = string.Empty;
         bool errorFlag = false;
         string detectedMovieId = string.Empty;
         string detectedUserId = string.Empty;
@@ -125,7 +134,7 @@ namespace NetQuax.Controllers
         if(movieId <= 0)
         {
             errorFlag = true;
-            errorMEssage = "Error: Movie does not exist!";
+            errorMessage = "Error: Movie does not exist!";
         }
 
         long userId = long.MinValue;

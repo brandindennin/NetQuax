@@ -33,3 +33,9 @@ function showErrorMessage(errorMessage, errorPanel) {
   $(errorPanel).css("border", "1px solid red");
   $(errorPanel).text(errorMessage);
 }
+
+function ShowBillingInfo(element) {
+  if ($(element).val() > 1) {   
+    $('#billingInfoRow').fadeIn(200);
+  }
+}

@@ -1,4 +1,8 @@
 ﻿
+$(document).ready(function () {
+  $('.dropdown-toggle').dropdown()
+});
+
 function ValidateAddUser() {
   alert('test');
   var errorMessage = "";

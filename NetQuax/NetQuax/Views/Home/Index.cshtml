@@ -10,6 +10,14 @@
     <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
 
+@* Div with ID movies controles searching and movie details *@
+<div id="movies">
+<div class="row">
+    <div class="col-sm-4">1</div>
+    <div class="col-sm-4">2</div>
+    <div class="col-sm-4">3</div>
+</div></div>
+@*Sawyers changes ^^*@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
@@ -65,6 +73,7 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
+
 </div>
 @Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel(1))
 @*A comment in Razor syntax*@
@@ -90,6 +99,7 @@
   </div>
 </div>
 
+
 <div class="row movie-row" id="home-Sale">
   <div class="col-sm-12">
     <div class="row">
@@ -110,7 +120,9 @@
       }
     </div>
   </div>
+
 </div>
+
 
 <div class="row movie-row" id="home-Chosen">
   <div class="col-sm-12">
@@ -133,3 +145,4 @@
     </div>
   </div>
 </div>
+

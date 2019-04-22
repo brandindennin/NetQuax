@@ -44,9 +44,12 @@ function searchMovies() {
 }
 
 function ShowBillingInfo(element) {
-  if ($(element).val() > 1) {   
-    $('#billingInfoRow').fadeIn(200);
-  }
+    if ($(element).val() > 1) {
+        $('#billingInfoRow').fadeIn(200);
+    }
+    if ($(element).val() == 1){
+        $('#billingInfoRow').fadeOut(200);
+    }
 }
 
 function ValidateSignIn() {

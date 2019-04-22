@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 @*<head>
@@ -153,18 +153,19 @@
             NetQuax
           </a>
           <ul class="dropdown-menu">
-            <li @*class="username_cs"*@ onclick="showSignInModal(@Session["User"])"><a href="#"> @( Session["User"] != null ? "Hello, User" : "Sign in")</a></li>
+            <li  onclick="showSignInModal(@Session["User"])"><strong><a href="#"> @(Session["User"] != null? "Hello, ": String.Empty)</strong><span style='color:blue;'> @( Session["User"] != null ? "" + Session["User"].ToString() : "Sign in") </span></a></li>
 
             @{
               if (Session["UserId"] != null && (long)Session["UserId"] > 0)
               {
                 <li><a href="#">Profile</a></li>
-                @Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
+//@Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
               }
             }
             <li onclick="showCreateAccountModal(@Session["User"])"><a href="#">Create an account</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">About</a></li>
+            <li><a href="#">Sign Out</a></li>
           </ul>
         </li>
         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
@@ -192,6 +193,6 @@
       <p>&copy; @DateTime.Now.Year - NetQuax</p>
     </footer>
   </div>
-
 </body>
+
 </html>

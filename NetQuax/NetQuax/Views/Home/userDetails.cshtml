@@ -34,7 +34,7 @@
             <div class="row margin-top-10">
               <div class="col-sm-12">
                 <label for="editUser-UserType">User Type</label>
-                <select class="form-control" name="userType" disabled>
+                <select class="form-control" name="userType" readonly>
                   <option @(Model.User != null && Model.User.UserType == 1 ? "Selected" : string.Empty) value="1">Hatchling</option>
                   <option @(Model.User != null && Model.User.UserType == 2 ? "Selected" : string.Empty) value="2">Full-Grown Duck</option>
                   <option @(Model.User != null && Model.User.UserType == 3 ? "Selected" : string.Empty) value="3">Mother Duck</option>

@@ -1,0 +1,40 @@
+﻿
+<div id="modal-SignIn" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><b>Sign In</b></h3>
+      </div>
+      <div class="modal-body">
+        @using (Ajax.BeginForm("SignIn", "Home", new AjaxOptions
+        {
+          OnBegin = "return ValidateSignIn() ",
+          OnSuccess = "HandleSignIn"
+        },
+        new
+        {
+          id = "signInForm",
+          name = "SignInForm"
+        }))
+        {
+          <div class="row">
+            <div class="col-sm-12">
+              <label>Username:</label>
+              <input type="text" name="Username" id="signIn-Username" value="" class="form-control" />
+              <label>Password:</label>
+              <input type="text" id="signIn-Password" name="Password" value="" class="form-control" />
+            </div>
+          </div>
+        }
+
+        <div class="modal-footer">
+          <div id="signIn-Error" class="margin-bottom-10" style="text-align: center;">
+            <p id="addUser-ErrorMessage"></p>
+          </div>
+          <button type="button" onclick="$('#signInForm').submit()" class="btn btn-primary">Sign in</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

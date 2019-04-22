@@ -6,23 +6,17 @@ namespace NetQuax.Models
   public class BrowseModel
   {
     // TODO: Browse Model needs a list of every movie, use Home Model as example
-    private List<Movie> _browseMovies;
+    private MovieList _browseMovies;
 
     public BrowseModel()
     {
-      _browseMovies = null;
+      _browseMovies = new MovieList();
     }
 
-    public List<Movie> BrowseMovies
+    public MovieList BrowseMovies
     {
       get
       {
-        for (int i = 1; i < 19; i++)
-        {
-          // get the first 3 movies from the database
-          NetQuax.Entities.Movie movie = new NetQuax.Entities.Movie(i);
-          _browseMovies.Add(movie);
-        }
         return _browseMovies;
       }
     }

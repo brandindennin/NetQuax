@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Web.Mvc;
 
 namespace NetQuax.Entities
 {
@@ -9,13 +10,13 @@ namespace NetQuax.Entities
     private int _activeMovies;
     private long _addressId;
     private string _password;
-    private int _userId;
+    private long _userId;
     private string _username;
     private long _userType;
 
     #endregion fields
 
-    public User(int userId)
+    public User(long userId)
     {
       _userId = userId;
     }
@@ -147,6 +148,7 @@ namespace NetQuax.Entities
         return 1;
       }
     }
+
 
     public Address GetAddressByUser(int userId)
     {

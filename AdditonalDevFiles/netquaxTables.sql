@@ -7,7 +7,7 @@ CREATE TABLE USERS(
   isAdmin BIT NULL,
   userAddressId BIGINT,
   userTypeId BIGINT NULL,
-  userCCInfo BIGINT
+  userCCInfoId BIGINT
   );
 
 CREATE TABLE ADDRESSES(
@@ -32,6 +32,7 @@ CREATE TABLE CREDITCARD(
    creditCardId BIGINT IDENTITY(1,1) PRIMARY KEY,
    creditCardNumber VARCHAR (50),
    expirationDate DATETIME,
+   CVV BIGINT,
    issuer VARCHAR(20),
 	billingAddressId BIGINT,
    addressId BIGINT,   

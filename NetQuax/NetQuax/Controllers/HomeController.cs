@@ -49,6 +49,7 @@ namespace NetQuax.Controllers
       string detectedCardIssuer = string.Empty;
       string detectedCardName = string.Empty;
       string detectedCardNumber = string.Empty;
+      string detectedExpDate = string.Empty;
       string detectedCVV = string.Empty;
       string errorMessage = string.Empty;
       bool errorFlag = false;
@@ -65,6 +66,46 @@ namespace NetQuax.Controllers
         if (form.AllKeys.Contains("PasswordConfirmation"))
         {
           detectedPasswordConfirmation = form["PasswordConfirmation"];
+        }
+        if (form.AllKeys.Contains("AddressLine1"))
+        {
+          detectedAddressLine1 = form["AddressLine1"];
+        }
+        if (form.AllKeys.Contains("AddressLine2"))
+        {
+          detectedAddressLine1 = form["AddressLine2"];
+        }
+        if (form.AllKeys.Contains("Zip"))
+        {
+          detectedAddressLine1 = form["Zip"];
+        }
+        if (form.AllKeys.Contains("State"))
+        {
+          detectedAddressLine1 = form["State"];
+        }
+        if (form.AllKeys.Contains("City"))
+        {
+          detectedAddressLine1 = form["City"];
+        }
+        if (form.AllKeys.Contains("CardIssuer"))
+        {
+          detectedAddressLine1 = form["CardIssuer"];
+        }
+        if (form.AllKeys.Contains("CardName"))
+        {
+          detectedAddressLine1 = form["CardName"];
+        }
+        if (form.AllKeys.Contains("ExpDate"))
+        {
+          detectedExpDate = form["ExpDate"];
+        }
+        if (form.AllKeys.Contains("CardNumber"))
+        {
+          detectedAddressLine1 = form["CardNumber"];
+        }
+        if (form.AllKeys.Contains("CVV"))
+        {
+          detectedAddressLine1 = form["CVV"];
         }
       }
 
@@ -87,12 +128,41 @@ namespace NetQuax.Controllers
         //TODO: Error
       }
       if (!errorFlag)
+      
       {
+        using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+        {
+            conn.Open();
+            string queryString = string.Format("INSERT INTO CREDITCARD VALUES (CardNumber, ExpDate, CVV, CardIssuer)");
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                _cardHolder = (string)reader[0];
+            }
+            conn.Close();
+        }
+
+        using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+        {
+          conn.Open();
+          string queryString = string.Format("INSERT INTO ADDRESSES VALUES (AddressLine1, AddressLine2, City, State, Zip)");
+          SqlCommand cmd = new SqlCommand(queryString, conn);
+          reader = cmd.ExecuteReader();
+          while (reader.Read())
+          {
+            _cardHolder = (string)reader[0];
+          }
+          conn.Close();
+        }
+        //TODO: return home view
+
+        //TODO: Credit Card and Address Key
         //Session["User"] = newUser;
         /*using (SqlConnection conn = new SqlConnection(Globals.connectionString))
         {
             conn.Open();
-            string cmdString = string.Format("INSERT INTO USERS VALUES (blah blah blah)", _billingInformationId);
+            string queryString = string.Format("INSERT INTO USERS VALUES (userName, userPassword, isAdmin, userAddressId, userTypeId, userCCInfo)");
             SqlCommand cmd = new SqlCommand(queryString, conn);
             reader = cmd.ExecuteReader();
             while (reader.Read())

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NetQuax.Entities;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using NetQuax.Entities;
 using System.Data.SqlClient;
+
+
 namespace NetQuax.Controllers
 {
   public class HomeController : Controller
@@ -12,8 +11,7 @@ namespace NetQuax.Controllers
     public ActionResult Index()
     {
       //NetQuax.Entities.User user = new NetQuax.Entities.User(1);
-     
-      return View();
+      return View("Index", new NetQuax.Models.HomePageModel());
     }
 
     public ActionResult About()
@@ -30,40 +28,94 @@ namespace NetQuax.Controllers
       return View();
     }
 
+    public ActionResult Browse()
+    {
+      return View("BeginBrowsePage", new NetQuax.Models.BrowseModel());
+    }
 
     /// <summary cref="User" >">
     /// Adds A new user based upon inputs from add user form
-    /// </summary> 
+    /// </summary>
     public ActionResult AddUser(FormCollection form)
     {
       string detectedUserName = string.Empty;
       string detectedPassword = string.Empty;
       string detectedPasswordConfirmation = string.Empty;
+      string detectedAddressLine1 = string.Empty;
+      string detectedAddressLine2 = string.Empty;
+      string detectedZip = string.Empty;
+      string detectedState = string.Empty;
+      string detectedCity = string.Empty;
+      string detectedCardIssuer = string.Empty;
+      string detectedCardName = string.Empty;
+      string detectedCardNumber = string.Empty;
+      string detectedExpDate = string.Empty;
+      string detectedCVV = string.Empty;
       string errorMessage = string.Empty;
       bool errorFlag = false;
-      if(form != null)
+      if (form != null)
       {
         if (form.AllKeys.Contains("UserName"))
         {
           detectedUserName = form["UserName"];
         }
-        if(form.AllKeys.Contains("Password"))
+        if (form.AllKeys.Contains("Password"))
         {
           detectedPassword = form["Password"];
         }
-        if(form.AllKeys.Contains("PasswordConfirmation"))
+        if (form.AllKeys.Contains("PasswordConfirmation"))
         {
           detectedPasswordConfirmation = form["PasswordConfirmation"];
         }
+        if (form.AllKeys.Contains("AddressLine1"))
+        {
+          detectedAddressLine1 = form["AddressLine1"];
+        }
+        if (form.AllKeys.Contains("AddressLine2"))
+        {
+          detectedAddressLine1 = form["AddressLine2"];
+        }
+        if (form.AllKeys.Contains("Zip"))
+        {
+          detectedAddressLine1 = form["Zip"];
+        }
+        if (form.AllKeys.Contains("State"))
+        {
+          detectedAddressLine1 = form["State"];
+        }
+        if (form.AllKeys.Contains("City"))
+        {
+          detectedAddressLine1 = form["City"];
+        }
+        if (form.AllKeys.Contains("CardIssuer"))
+        {
+          detectedAddressLine1 = form["CardIssuer"];
+        }
+        if (form.AllKeys.Contains("CardName"))
+        {
+          detectedAddressLine1 = form["CardName"];
+        }
+        if (form.AllKeys.Contains("ExpDate"))
+        {
+          detectedExpDate = form["ExpDate"];
+        }
+        if (form.AllKeys.Contains("CardNumber"))
+        {
+          detectedAddressLine1 = form["CardNumber"];
+        }
+        if (form.AllKeys.Contains("CVV"))
+        {
+          detectedAddressLine1 = form["CVV"];
+        }
       }
 
-      if(detectedUserName == string.Empty)
+      if (detectedUserName == string.Empty)
       {
         errorFlag = true;
-        errorMessage = "Username is required";        
+        errorMessage = "Username is required";
       }
 
-      if(detectedPassword == string.Empty)
+      if (detectedPassword == string.Empty)
       {
         //TODO: Error
       }
@@ -75,105 +127,187 @@ namespace NetQuax.Controllers
       {
         //TODO: Error
       }
-      if(!errorFlag)
-      {           
-        //Session["User"] = newUser;
-          /*using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+      if (!errorFlag)
+      
+      {
+        using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+        {
+            conn.Open();
+            string queryString = string.Format("INSERT INTO CREDITCARD VALUES (CardNumber, ExpDate, CVV, CardIssuer)");
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                _cardHolder = (string)reader[0];
+            }
+            conn.Close();
+        }
+
+        using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+        {
+          conn.Open();
+          string queryString = string.Format("INSERT INTO ADDRESSES VALUES (AddressLine1, AddressLine2, City, State, Zip)");
+          SqlCommand cmd = new SqlCommand(queryString, conn);
+          reader = cmd.ExecuteReader();
+          while (reader.Read())
           {
-              conn.Open();
-              string cmdString = string.Format("INSERT INTO USERS VALUES (blah blah blah)", _billingInformationId);
-              SqlCommand cmd = new SqlCommand(queryString, conn);
-              reader = cmd.ExecuteReader();
-              while (reader.Read())
-              {
-                  _cardHolder = (string)reader[0];
-              }
-              conn.Close();
-          }*/
-        //TODO: return home view 
+            _cardHolder = (string)reader[0];
+          }
+          conn.Close();
+        }
+        //TODO: return home view
+
+        //TODO: Credit Card and Address Key
+        //Session["User"] = newUser;
+        /*using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+        {
+            conn.Open();
+            string queryString = string.Format("INSERT INTO USERS VALUES (userName, userPassword, isAdmin, userAddressId, userTypeId, userCCInfo)");
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                _cardHolder = (string)reader[0];
+            }
+            conn.Close();
+        }*/
+        //TODO: return home view
       }
       else
       {
         //TODO: Return Error View
       }
+      return View("Index", new NetQuax.Models.HomePageModel());
+    }
+
+    // Method to be called when user checks out a movie
+    public ActionResult Checkout(FormCollection form)
+    {
+      string errorMessage = string.Empty;
+      bool errorFlag = false;
+      string detectedMovieId = string.Empty;
+      string detectedUserId = string.Empty;
+      if (form != null)
+      {
+        if (form.AllKeys.Contains("MovieId"))
+        {
+          detectedMovieId = form["MovieId"];
+        }
+        if (form.AllKeys.Contains("UserId"))
+        {
+          detectedUserId = form["UserId"];
+        }
+      }
+      long movieId = long.MinValue;
+      long.TryParse(detectedMovieId, out movieId);
+      if (movieId <= 0)
+      {
+        errorFlag = true;
+        errorMessage = "Error: Movie does not exist!";
+      }
+
+      long userId = long.MinValue;
+      long.TryParse(detectedUserId, out userId);
+      if (userId <= 0)
+      {
+        //TODO: errorChecking
+      }
+
+      if (!errorFlag)
+      {
+        //TODO modify userdb to reflect changes
+        //TODO return home view
+      }
+      else
+      {
+        //Don't update db
+        //return error view
+      }
       return null;
     }
-    // Method to be called when user checks out a movie
-    public ActionResult CheckoutMovie(FormCollection form)
+
+    public JsonResult SignIn(FormCollection form)
     {
-        string errorMEssage = string.Empty;
-        bool errorFlag = false;
-        string detectedMovieId = string.Empty;
-        string detectedUserId = string.Empty;
-        if(form != null)
-        {
-            if(form.AllKeys.Contains("MovieId"))
-            {
-                detectedMovieId = form["MovieId"];
-            }
-            if(form.AllKeys.Contains("UserId"))
-            {
-                detectedUserId = form["UserId"];
-            }
-        }
-        long movieId = long.MinValue;
-        long.TryParse(detectedMovieId, out movieId);
-        if(movieId <= 0)
-        {
-            errorFlag = true;
-            errorMEssage = "Error: Movie does not exist!";
-        }
+      string detectedUserName = string.Empty;
+      string detectedPassword = string.Empty;
+      string errorMessage = string.Empty;
+      bool errorFlag = false;
+      bool isSignedIn = false ;
 
-        long userId = long.MinValue;
-        long.TryParse(detectedUserId, out userId);
-        if(userId <= 0)
+      if (form != null)
+      {
+        if(form.AllKeys.Contains("Username"))
         {
-            //TODO: errorChecking
+          detectedUserName = form["Username"];
         }
-
-        if(!errorFlag)
+        if(form.AllKeys.Contains("Password"))
         {
-            //TODO modify userdb to reflect changes
-            //TODO return home view
+          detectedPassword = form["Password"];
+        }
+      }      
+
+      if (detectedUserName == string.Empty)
+      {
+        errorFlag = true;
+        errorMessage = "Username is required";
+      }
+      if (detectedPassword == string.Empty)
+      {
+        errorMessage = "Password is required";
+      }
+      if (!errorFlag)
+      {
+        isSignedIn = ValidateUser(detectedUserName, detectedPassword);
+        if(isSignedIn)
+        {
+          errorMessage = "Successfully signed in!";
         }
         else
         {
-            //Don't update db
-            //return error view
+          errorMessage = "Error signing in, check your credentials.";
         }
-        return null;
+      }
+      return Json(new
+      {
+        ErrorMessage = errorMessage,
+        Valid = isSignedIn
+      });
     }
 
-    public ActionResult SignIn(FormCollection form)
+    public bool ValidateUser(string username, string password)
     {
-        string detectedUserName = string.Empty;
-        string detectedPassword = string.Empty;
-        string errorMessage = string.Empty;
-        bool errorFlag = false;
-        
-        if(detectedUserName == string.Empty)
+      bool valid = false;
+      string detectedPassword = string.Empty;
+      long detectedUserId = long.MinValue;
+      SqlDataReader reader = null;
+      using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+      {
+        conn.Open();
+        string queryString = string.Format("SELECT userPassword, userId from USERS WHERE userName = '{0}'", username);
+        SqlCommand cmd = new SqlCommand(queryString, conn);
+        reader = cmd.ExecuteReader();
+        while (reader.Read())
         {
-            errorFlag = true;
-            errorMessage = "Username is required";
+          detectedPassword = (string)reader[0];
+          detectedUserId = (long)reader[1];
         }
-        if(detectedPassword == string.Empty)
-        {
-            errorMessage = "Password is required";
-        }
-        if (!errorFlag)
-        {
-            //TODO: Implement this thing
-            //NetQuax.Entities.IUser user = NetQuax.Entities.User.RetrieveByUserName(detectedUserName);
-        }
-        return null;
+
+        conn.Close();
+      }
+      if (detectedPassword == password)
+      {
+        valid = true;
+        Session["User"] = username;
+        Session["UserId"] = detectedUserId;
+      }
+      return valid;
     }
 
     public ActionResult SignOut()
     {
-        Session["UserName"] = string.Empty;
-        //TODO return home view
-        return null;
+      Session["UserName"] = null;
+      //TODO return home view
+      return null;
     }
-
   }
 }

@@ -1,0 +1,93 @@
+﻿@model NetQuax.Models.UserDetailsModel
+@{
+    Layout = null;
+}
+
+<div id="modal-userDetails" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><b>Create a User Account</b></h3>
+      </div>
+      <div class="modal-body">
+        @using (Ajax.BeginForm("SignIn", "Home", new AjaxOptions
+        {
+          OnBegin = "return ValidateSignIn() ",
+          OnSuccess = "HandleSignIn()"
+        },
+        new
+        {
+          id = "signInForm",
+          name = "SignInForm"
+        }))
+        {
+          <div class="row">
+            <div class="row">
+              <div class="col-sm-12"><b>Edit Your user profile</b></div>
+            </div>
+            <div class="row margin-top-10">
+              <div class="col-sm-12">
+                <label for="editUser-Username">User Name</label>
+                <p>@(Model.User != null ? Model.User.UserName : "Error: could not retrieve the user") </p>
+              </div>
+            </div>
+            <div class="row margin-top-10">
+              <div class="col-sm-12">
+                <label for="editUser-UserType">User Type</label>
+                <select class="form-control" name="userType" disabled>
+                  <option @(Model.User != null && Model.User.UserType == 1 ? "Selected" : string.Empty) value="1">Hatchling</option>
+                  <option @(Model.User != null && Model.User.UserType == 2 ? "Selected" : string.Empty) value="2">Full-Grown Duck</option>
+                  <option @(Model.User != null && Model.User.UserType == 3 ? "Selected" : string.Empty) value="3">Mother Duck</option>
+                </select>
+              </div>
+            </div>
+            <div class="row margin-top-10">
+              <div class="col-sm-12">
+          
+              </div>
+            </div>
+          </div>
+        }
+
+        <div class="modal-footer">
+          <div id="signIn-Error" class="margin-bottom-10" style="text-align: center;">
+            <p id="addUser-ErrorMessage"></p>
+          </div>
+          <button type="button" onclick="$('#signInForm').submit()" class="btn btn-primary">Sign in</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+   
+    <div class="row">
+      <div class="row">
+        <div class="col-sm-12"><b>Edit Your user profile</b></div>
+      </div>
+      <div class="row margin-top-10">
+        <div class="col-sm-12">
+          <label for="editUser-Username">User Name</label>
+          <input type="text" name="Username" value="@(Model.User != null ? Model.User.UserName : "Error: could not retrieve the user")" class="form-control" />
+        </div>
+      </div>
+      <div class="row margin-top-10">
+        <div class="col-sm-12">
+          <label for="editUser-UserType">User Type</label>
+          <select class="form-control" name="userType">
+            <option @(Model.User != null && Model.User.UserType == 1 ? "Selected" : string.Empty) value="1">Hatchling</option>
+            <option @(Model.User != null && Model.User.UserType == 2 ? "Selected" : string.Empty) value="2">Full-Grown Duck</option>
+            <option @(Model.User != null && Model.User.UserType == 3 ? "Selected" : string.Empty) value="3">Mother Duck</option>
+          </select>
+        </div>
+      </div>
+      <div class="row margin-top-10">
+        <div class="col-sm-12">
+          
+        </div>
+      </div>
+    </div>
+

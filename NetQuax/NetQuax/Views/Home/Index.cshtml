@@ -1,6 +1,14 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model NetQuax.Models.HomePageModel
+@{
+  ViewBag.Title = "Home Page";
 }
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
 
 @* Div with ID movies controles searching and movie details *@
 <div id="movies">
@@ -8,20 +16,133 @@
     <div class="col-sm-4">1</div>
     <div class="col-sm-4">2</div>
     <div class="col-sm-4">3</div>
-</div>
-<hr />
-<div class="row">
-    <div class="col-sm-4">1</div>
-    <div class="col-sm-4">2</div>
-    <div class="col-sm-4">3</div>
-</div>
-<hr />
-<div class="row">
-    <div class="col-sm-4">1</div>
-    <div class="col-sm-4">2</div>
-    <div class="col-sm-4">4</div>
-</div>
-</div>
-<hr />
+</div></div>
+@*Sawyers changes ^^*@
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="row" style="background-color: white;">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+          <div class="row">
 
+            @{
+              foreach (NetQuax.Entities.Movie m in Model.FeaturedMovies)
+              {
+                <div style="text-align:center;" class="col-sm-4">
+                  <img style="height:300px; width:200px;" src=" @("/images/" + m.Title + ".jpg")" />
+                </div>
+              }
+
+            }
+          </div>
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="row" style="background-color: white;">
+
+        <div class="col-sm-4"><img src="~/images/movie-placeholder.jpg" style="width:100%"></div>
+
+        <div class="col-sm-4"><img src="~/images/movie-placeholder.jpg" style="width:100%"></div>
+
+        <div class="col-sm-4"><img src="~/images/movie-placeholder.jpg" style="width:100%"></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="row" style="background-color: white;">
+
+        <div class="col-sm-4"><img src="~/images/movie-placeholder.jpg" style="width:100%"></div>
+
+        <div class="col-sm-4"><img src="~/images/movie-placeholder.jpg" style="width:100%"></div>
+
+        <div class="col-sm-4"><img src="~/images/movie-placeholder.jpg" style="width:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+</div>
+
+@*A comment in Razor syntax*@
+<div class="row movie-row" id="home-Featured">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-4"><p><b>Featured Movies:</b></p></div>
+      <div class="col-sm-8"></div>
+    </div>
+    <div class="row">
+      @{
+        if (Model != null)
+        {
+          foreach (NetQuax.Entities.Movie movie in Model.FeaturedMovies)
+          {
+            <div id="movie-@movie.MovieId-@movie.Director" class="col-sm-4 movie-container">
+              <img src="~/images/movie-placeholder.jpg" class="movie-image" />@*Populate this with image from database once we get it*@
+            </div>
+          }
+        }
+      }
+    </div>
+  </div>
+</div>
+
+
+<div class="row movie-row" id="home-Sale">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-4"><p><b>On Sale Now:</b></p></div>
+      <div class="col-sm-8"></div>
+    </div>
+    <div class="row">
+      @{
+        if (Model != null)
+        {
+          foreach (NetQuax.Entities.Movie movie in Model.SaleMovies)
+          {
+            <div id="movie-@movie.MovieId-@movie.Director" class="col-sm-4 movie-container">
+              <img src="~/images/movie-placeholder.jpg" class="movie-image" /> @*Populate this with image from database once we get it*@
+            </div>
+          }
+        }
+      }
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row movie-row" id="home-Chosen">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-4"><p><b>Picked For You:</b></p></div>
+      <div class="col-sm-8"></div>
+    </div>
+    <div class="row">
+      @{
+        if (Model != null)
+        {
+          foreach (NetQuax.Entities.Movie movie in Model.ChosenMovies)
+          {
+            <div id="movie-@movie.MovieId-@movie.Director" class="col-sm-4 movie-container">
+              <img src="~/images/movie-placeholder.jpg" class="movie-image" /> @*Populate this with image from database once we get it*@
+            </div>
+          }
+        }
+      }
+    </div>
+  </div>
+</div>
 

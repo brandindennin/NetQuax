@@ -14,3 +14,32 @@
 }
 
 
+.movie-row{
+  margin-bottom: 20px;
+}
+
+.margin-top-10{
+  margin-top: 10px;
+}
+
+.margin-top-20{
+  margin-top: 20px;
+}
+
+.margin-bottom-10{
+  margin-bottom: 10px; 
+}
+
+.movie-image{
+  width: 60%;
+}
+#myCarousel{
+   
+  /*background-color: white;*/
+}
+li.username_cs{
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: blue;
+}

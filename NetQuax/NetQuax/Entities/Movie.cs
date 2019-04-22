@@ -11,7 +11,7 @@ namespace NetQuax.Entities
         #region fields
         private string _title;
         private string _director;
-        private int _movieId;
+        private long _movieId;
         private string _description;
         private int _price;
         private float _rating;
@@ -21,7 +21,7 @@ namespace NetQuax.Entities
         #endregion
 
         #region constructor
-        public Movie(int movieId)
+        public Movie(long movieId)
         {
             _movieId = movieId;
             _title = null;

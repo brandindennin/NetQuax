@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
 
 
 namespace NetQuax.Entities
@@ -19,7 +20,25 @@ namespace NetQuax.Entities
     {
       get
       {
-        return null;
+        if (_allMovies.Count == 0 )
+        {
+          SqlDataReader reader = null;
+          using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+          {
+            conn.Open();
+            string queryString = string.Format("SELECT movieId from MOVIES");
+            SqlCommand cmd = new SqlCommand(queryString, conn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+              Movie movie = new Movie((long)reader[0]);
+              _allMovies.Add(movie);
+
+            }
+            conn.Close();
+          }
+        }
+        return _allMovies;
       }
     }
   }

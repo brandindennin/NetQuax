@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@model NetQuax.Models.BrowseModel
 
-</head>
-<body>
 
-<div class="topnav" id="myTopnav">
-  <div class="dropdown">
-    <button class="dropbtn">Browse   
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div id="myDropdown" class="dropdown-content">
-   		<a id="myLink1" title="Click to do something" href="#" onclick="myFunction('Decade');return false;">By Decade</a>
-      <a id="myLink2" title="Click to do something" href="PleaseEnableJavascript.html" onclick="myFunction('Price');return false;">By Price</a>
-      <a id="myLink3" title="Click to do something" href="PleaseEnableJavascript.html" onclick="myFunction('CustomerReview');return false;">By Customer Review</a>
+<!--<div class="topnav" id="myTopnav" style="height:110%;">
+  <div class="row">
+    <div class="col-sm-2" style="color:lightgrey;">Browse</div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-6">
+      <select class="form-control">
+        <option value="Genre">Genre</option>
+        <option value="Year">Year</option>
+      </select>
     </div>
-  </div> 
-</div>
+  </div>
+</div>-->
+   
+
 <script>
     function myFunction(choice) {
       document.getElementById("myDropdown").style.display="";
@@ -28,7 +24,32 @@
     }
 </script>
 <div class="mainbody" id="myMainBody">
-
+  <div class="row margin-top-20 defaultSort">    
+    @{ 
+      if (Model != null && Model.BrowseMovies != null)
+      {
+        foreach (NetQuax.Entities.Movie m in Model.BrowseMovies.AllMovies.Take(3).OrderBy(x=> x.Title))
+        {
+          <div onclick="showDetailModal(@m.MovieId)" style="text-align:center;" class="col-sm-4">
+            <img style="width: 200px; height: 300px; text-align:center;" src="@("/images/" + m.Title + ".jpg")" />
+          </div>
+          @Html.Partial("modal-MovieDetails", new NetQuax.Models.MovieDetailsModel((int)m.MovieId))
+          }
+        }
+      }
+  </div>
+   <div class="row margin-top-20 defaultSort">    
+ @*   @{ 
+      if (Model != null && Model.BrowseMovies != null)
+      {
+        foreach (NetQuax.Entities.Movie m in Model.BrowseMovies.AllMovies.Take(3).Where()
+        {
+          <div style="text-align:center;" class="col-sm-4">
+            <img class="" style="width: 200px; height: 300px; text-align:center;" src="@("/images/" + m.Title + ".jpg")" />
+          </div>
+          }
+        }
+      }*@
+  </div>
 </div>
-</body>
-</html>
+ 

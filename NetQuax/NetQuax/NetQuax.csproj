@@ -180,9 +180,16 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\1c53a920619baa53434869e13d0224c0.png" />
     <Content Include="images\ad74acb38bcf6ffc00001566478d4183.png" />
+    <Content Include="images\American Hustle.jpg" />
+    <Content Include="images\duckboi.png" />
     <Content Include="images\e5c4b2e7bfda89c5a14d27c3a8821178.png" />
+    <Content Include="images\Idiocracy.jpg" />
     <Content Include="images\movie-placeholder.jpg" />
     <Content Include="images\netquaximagev3.jpg" />
+    <Content Include="images\Psycho.jpg" />
+    <Content Include="images\Raiders of the Lost Ark.jpg" />
+    <Content Include="images\Snakes On A Plane.jpg" />
+    <Content Include="images\The Grinch.jpg" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="ApplicationInsights.config">
@@ -197,7 +204,10 @@
     <Content Include="Views\Home\creditCardCheckout.html" />
     <Content Include="Views\Home\CustomerReview.html" />
     <Content Include="Views\Home\Decade.html" />
+    <Content Include="Views\Home\movieDetailsAndDescription.html" />
     <Content Include="Views\Home\Price.html" />
+    <Content Include="Views\Home\modal-SignIn.cshtml" />
+    <Content Include="Views\Home\modal-MovieDetails.cshtml" />
     <None Include="Views\Home\Search_Prototype\NetQuax.cshtml" />
     <Content Include="Views\Home\Search_Prototype\NetQuaxFunctionality.js" />
     <Content Include="Views\Home\Search_Prototype\NetQuaxStyle.css" />

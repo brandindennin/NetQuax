@@ -1,0 +1,67 @@
+﻿@model NetQuax.Models.MovieDetailsModel
+<div id="modal-movieDetails-@Model.MovieId" class="modal fade" tabindex="-1" role="dialog">
+  <style>
+
+
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+ .column {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  
+}
+</style>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><b>@Model.Movie.Title</b></h3>
+      </div>
+      <div class="modal-body">
+        <div class="column" style="background-color:#aaa;">
+          <p style="float: left;"><img style="width:300px; height:450px;"  src="@("/images/" + Model.Movie.Title + ".jpg")" alt="MovieImage"></p>
+          <p><i> @(Model != null && Model.Movie != null ? Model.Movie.Description : string.Empty) </i></p>
+        </div>
+
+        <div class="column" style="background-color:#FFF380;">
+          <p>Director: @(Model != null && Model.Movie != null ? Model.Movie.Director : string.Empty) </p>
+          <p>Genre: @(Model != null && Model.Movie != null ? Model.Movie.Mode : string.Empty)</p>
+          <p>Actors: @(Model != null && Model.Movie != null ? Model.Movie.Actor : string.Empty)</p>
+        </div>
+        <div class="column" style="background-color:#FFF380;">
+          <p>Year: @(Model != null && Model.Movie != null ? Model.Movie.YearReleased : string.Empty)</p>
+          <p>Customer Rating @(Model != null && Model.Movie != null ? Model.Movie.Rating.ToString() : string.Empty)</p>
+          <p>HD</p>
+        </div>
+        <div style="margin-bottom:10px;" class="column" style="background-color:#FFF380;">
+          <p>Price: @(Model != null && Model.Movie != null ? Model.Movie.Price.ToString() : string.Empty)</p>
+          <p>Hatchling</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div id="signIn-Error" class="margin-bottom-10" style="text-align: center;">
+          <p id="addUser-ErrorMessage"></p>
+        </div>
+        <button type="button" onclick="$('#signInForm').submit()" class="btn btn-primary">Sign in</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

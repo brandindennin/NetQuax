@@ -34,7 +34,8 @@
   width: 60%;
 }
 #myCarousel{
-    background-color: white;
+   
+  /*background-color: white;*/
 }
 li.username_cs{
     padding-left: 20px;

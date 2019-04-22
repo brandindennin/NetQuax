@@ -7,10 +7,10 @@ namespace NetQuax.Models
 {
   public class UserDetailsModel
   {
-    private int _userId;
+    private long _userId;
     private NetQuax.Entities.User _user;
 
-    public UserDetailsModel(int _userId)
+    public UserDetailsModel(long _userId)
     {
       _userId = _userId;
       _user = null;

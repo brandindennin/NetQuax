@@ -4,7 +4,7 @@ $(document).ready(function () {
 });
 
 function ValidateAddUser() {
-  alert('test');
+
   var errorMessage = "";
   var errorFlag = false;
   var errorPanel = $('#addUser-Error');
@@ -33,13 +33,56 @@ function ValidateAddUser() {
 }
 
 function showErrorMessage(errorMessage, errorPanel) {
-  alert('error');
-  $(errorPanel).css("border", "1px solid red");
-  $(errorPanel).text(errorMessage);
+  if (errorMessage != "") {
+    $(errorPanel).css("border", "1px solid red");
+    $(errorPanel).text(errorMessage);
+  }
+}
+function searchMovies() {
+  var searchString = $('#searchVal').val();
+
 }
 
 function ShowBillingInfo(element) {
   if ($(element).val() > 1) {   
     $('#billingInfoRow').fadeIn(200);
   }
+}
+
+function ValidateSignIn() {
+  var errorMessage = "";
+  var username = $('#signIn-Username').val();
+  var password = $('#signIn-Password').val();
+
+  if (username === "" || password === "") {
+    errorFlag = true;
+    errorMessage = "Both fields must be filled out";
+  }
+  var errorPanel = $('#signIn-Error');
+  showErrorMessage(errorMessage, errorPanel);
+}
+
+function HandleSignIn(e) {
+  alert("Handel");
+  alert(e.ErrorMessage);
+  if (e.Valid == true) {
+    $('#modal-AddUser').modal('hide');
+    location.reload();
+  }
+}
+
+function showSignInModal(user) {
+  if (!user) {
+    $('#modal-SignIn').modal('show');
+  }
+}
+function showCreateAccountModal(user) {
+  if (!user) {
+    $('#modal-AddUser').modal('show');
+  }
+}
+
+function showDetailModal(id) {
+  alert("showing modal");
+  $('#modal-movieDetails-' + id).modal('show');
 }

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Netquax Movie Descriptions</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  padding: 30px;
+  background-image: linear-gradient(-90deg, white, lightblue );
+  text-align: center;
+  font-size: 35px;
+  color: white;
+  text-shadow: 0 0 3px lightblue;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 15px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Movie Title</h1>
+</div>
+	
+<div class="row">
+  <div class="column">
+    <img src="movie-placeholder.jpg">
+</div>
+  <div class="column">
+    <p>Movie Summary/Description/Teaser</p>
+</div>
+	  </div>
+<div class="column">
+    <p>Director:</p>
+	<p>Genre:</p>
+	<p>Actors:</p>
+</div>
+	<div class="column">
+	<p>Year:</p>
+	<p>Customer Rating:</p>
+	<p>HD</p>
+</div>
+	<div class="column">
+	<p>Price</p>
+	<p>User Type</p>
+</div>   
+	<div class="column">
+	<button style = float: right;>Add this movie to my shopping cart</button>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

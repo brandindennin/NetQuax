@@ -130,12 +130,12 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _title = (string)reader[0];
+                            _actor = (string)reader[0];
                         }
                         conn.Close();
                     }
                 }
-                return _title;
+                return _actor;
             }
         }
         public float Rating
@@ -153,12 +153,12 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _title = (string)reader[0];
+                            _rating = (string)reader[0];
                         }
                         conn.Close();
                     }
                 }
-                return int.MinValue;
+                return _rating;
             }
         }
         public int Price
@@ -176,12 +176,12 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _title = (string)reader[0];
+                            _price = (string)reader[0];
                         }
                         conn.Close();
                     }
                 }
-                return int.MinValue;
+                return _price;
             }
         }
         public string YearReleased
@@ -199,12 +199,12 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _title = (string)reader[0];
+                            _yearReleased = (string)reader[0];
                         }
                         conn.Close();
                     }
                 }
-                return _title;
+                return _yearReleased;
             }
         }
         public string Mode
@@ -222,12 +222,12 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _title = (string)reader[0];
+                            _mode = (string)reader[0];
                         }
                         conn.Close();
                     }
                 }
-                return _title;
+                return _mode;
             }
         }
 

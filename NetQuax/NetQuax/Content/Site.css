@@ -18,6 +18,10 @@
   margin-bottom: 20px;
 }
 
+.margin-top-5 {
+  margin-top: 5px;
+}
+
 .margin-top-10{
   margin-top: 10px;
 }
@@ -30,6 +34,10 @@
   margin-bottom: 10px; 
 }
 
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
 .movie-image{
   width: 60%;
 }
@@ -37,7 +45,16 @@
    
   /*background-color: white;*/
 }
-li.username_cs{
-    
-    color: blue;
+.carousel-control{
+  background-color: none !important;
+  background-image: none !important;
+}
+.carousel-control span {
+  color:lightgray;
+}
+li.username_cs {
+  color: blue;
+}
+.modal{
+  z-index:2000 !important;
 }

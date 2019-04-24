@@ -1,6 +1,5 @@
 @model NetQuax.Models.BrowseModel
 
-
 <!--<div class="topnav" id="myTopnav" style="height:110%;">
   <div class="row">
     <div class="col-sm-2" style="color:lightgrey;">Browse</div>
@@ -13,43 +12,62 @@
     </div>
   </div>
 </div>-->
-   
+@*<script>
+      function myFunction(choice) {
+        document.getElementById("myDropdown").style.display="";
+        document.getElementById("myDropdown").removeAttribute("style");
+        document.getElementById("myMainBody").innerHTML = "Display " + choice + " information here";
+        document.getElementById("myMainBody").innerHTML = '<object type="text/html" data="' + choice + '.html" width="800px" height="600px" style="overflow:auto;border:5px ridge blue"> </object>'
+      }
+  </script>*@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    @using (Ajax.BeginForm("SearchMovies", "Home",
+    new AjaxOptions
+    {
+      OnBegin = "ValidateSearchString",
+      OnSuccess = "HandleSearchJson"
+    },
+    new
+    {
+      id = "SearchMovies",
+      name = "SearchMovies"
+    }))
+    {
+      <div class="row margin-top-5">
+        <div class="col-sm-4">
+          <select class="form-control" name="SearchCategory">
+            <option value="">Search by...</option>
+            <option value="Title">Title</option>
+            <option value="Actor">Actor</option>
+            <option value="Genre">Genre</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <input type="text" id="searchString" class="form-control" name="SearchString" placeholder="The Mighty Ducks">
+        </div>
 
-<script>
-    function myFunction(choice) {
-      document.getElementById("myDropdown").style.display="";
-      document.getElementById("myDropdown").removeAttribute("style");
-      document.getElementById("myMainBody").innerHTML = "Display " + choice + " information here";
-      document.getElementById("myMainBody").innerHTML = '<object type="text/html" data="' + choice + '.html" width="800px" height="600px" style="overflow:auto;border:5px ridge blue"> </object>'
+        <div class="col-sm-1">
+          <button type="button" onclick="$('#SearchMovies').submit();" class="btn btn-default">Search</button>
+        </div>
+      </div>
     }
-</script>
+  </div>
+</nav>
 <div class="mainbody" id="myMainBody">
-  <div class="row margin-top-20 defaultSort">    
-    @{ 
+  <div class="row margin-top-20 defaultSort">
+
+    @{
       if (Model != null && Model.BrowseMovies != null)
       {
-        foreach (NetQuax.Entities.Movie m in Model.BrowseMovies.AllMovies.Take(3).OrderBy(x=> x.Title))
+        foreach (NetQuax.Entities.Movie m in Model.BrowseMovies.AllMovies.OrderBy(x => x.Title))
         {
-          <div onclick="showDetailModal(@m.MovieId)" style="text-align:center;" class="col-sm-4">
+          <div onclick="showDetailModal(@m.MovieId)" style="text-align:center;" class="col-sm-4 margin-bottom-20">
             <img style="width: 200px; height: 300px; text-align:center;" src="@("/images/" + m.Title + ".jpg")" />
           </div>
           @Html.Partial("modal-MovieDetails", new NetQuax.Models.MovieDetailsModel((int)m.MovieId))
-          }
         }
       }
-  </div>
-   <div class="row margin-top-20 defaultSort">    
- @*   @{ 
-      if (Model != null && Model.BrowseMovies != null)
-      {
-        foreach (NetQuax.Entities.Movie m in Model.BrowseMovies.AllMovies.Take(3).Where()
-        {
-          <div style="text-align:center;" class="col-sm-4">
-            <img class="" style="width: 200px; height: 300px; text-align:center;" src="@("/images/" + m.Title + ".jpg")" />
-          </div>
-          }
-        }
-      }*@
+    }
   </div>
 </div>
- 

@@ -14,23 +14,20 @@
   @Scripts.Render("~/bundles/modernizr")
 
   <nav class="navbar navbar-inverse">
-
     <div class="container-fluid">
-
       <ul class="nav navbar-nav">
-
         <li class="btn-group">
           <a role="button" class="dropdown-toggle" data-toggle="dropdown">
             NetQuax
           </a>
           <ul class="dropdown-menu">
-            <li  onclick="showSignInModal(@Session["User"])"><strong><a href="#"> @(Session["User"] != null? "Hello, ": String.Empty)</strong><span style='color:blue;'> @( Session["User"] != null ? "" + Session["User"].ToString() : "Sign in") </span></a></li>
+            <li onclick="showSignInModal(@Session["User"])"><strong><a href="#"> @(Session["User"] != null ? "Hello, " : String.Empty)</strong><span style='color:blue;'> @( Session["User"] != null ? "" + Session["User"].ToString() : "Sign in") </span></a></li>
 
             @{
               if (Session["UserId"] != null && (long)Session["UserId"] > 0)
               {
                 <li><a href="#">Profile</a></li>
-//@Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
+                @Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
               }
             }
             <li onclick="showCreateAccountModal(@Session["User"])"><a href="#">Create an account</a></li>
@@ -65,139 +62,129 @@
     </footer>
   </div>
 </body>
-
 </html>
-
-
-
-
-
 
 @*STUFF I REMOVED
   @*<head>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - NetQuax</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @* testing zone *@
-    @*<style>
+@*<style>
 
-        #movies img, #movie img {
-            z-index: auto;
-            width: 100%;
-        }
+      #movies img, #movie img {
+          z-index: auto;
+          width: 100%;
+      }
 
-        body {
-            background: #fff;
-        }
+      body {
+          background: #fff;
+      }
 
-        #movies .col-md-4 .well {
-            height: 390px;
-            width: 305px;
-            background: #1A1A1D;
-            color: azure;
-        }
+      #movies .col-md-4 .well {
+          height: 390px;
+          width: 305px;
+          background: #1A1A1D;
+          color: azure;
+      }
 
-        #movies .col-md-4 img {
-            height: 250px;
-            width: 220px;
-        }
+      #movies .col-md-4 img {
+          height: 250px;
+          width: 220px;
+      }
 
-        #cont, .jumbotron {
-            background-color: #3e4444;
-        }
+      #cont, .jumbotron {
+          background-color: #3e4444;
+      }
 
-        .checked {
-            color: orange;
-        }
+      .checked {
+          color: orange;
+      }
 
-        /*testing carisol */
-        .column {
-            float: left;
-            width: 25%;
-            padding: 50px;
-            /*  left:40px;*/
-        }
+      /*testing carisol */
+      .column {
+          float: left;
+          width: 25%;
+          padding: 50px;
+          /*  left:40px;*/
+      }
 
-
-        /* Clear floats after image containers */
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-    </style>*@
+      /* Clear floats after image containers */
+      .row::after {
+          content: "";
+          clear: both;
+          display: table;
+      }
+  </style>*@
 @* end of testing *@
 @*</head>*@
 @*<body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">NetQuax</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Browse</a></li>
-            </ul>
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="#">NetQuax</a>
+          </div>
+          <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Browse</a></li>
+          </ul>
 
-            <div class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" id="searchText">
-                </div>
-                <button type="submit" class="btn btn-default" id="butt">Submit</button>
-            </div>
-        </div>
-    </nav>
-    <div class="top-header"></div>
-    <div class="container body-content">
-        <hr />
+          <div class="navbar-form navbar-left">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search" id="searchText">
+              </div>
+              <button type="submit" class="btn btn-default" id="butt">Submit</button>
+          </div>
+      </div>
+  </nav>
+  <div class="top-header"></div>
+  <div class="container body-content">
+      <hr />
+  </div>
+  @RenderBody()
 
-    </div>
-    @RenderBody()
+  @Scripts.Render("~/bundles/jquery")
+  @Scripts.Render("~/bundles/bootstrap")
+  @RenderSection("scripts", required: false)
 
+  <script>
+  $('#butt').click(function(){
+      let movieSearch = $('#searchText').val()
+      // console.log($('#searchText').val());
+      console.log(movieSearch);
+      getMovies(movieSearch);
+      });
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+      function getMovies(movieSearch){
+      axios.get('http://www.omdbapi.com/?s='+movieSearch+'&apikey=13b99c79')
+      .then((response)=>{
+      console.log(response);
+      let movies = response.data.Search;
+      console.log(movies)
+      let output ='';
+      $.each(movies, (index, movie)=>{
+          output +=`
+          <div class="col-md-4">
+              <div class="well text-center">
+              <img src='${movie.Poster}'>
+              <h5>${movie.Title}</h5>
+              <a onclick="'${movie.imdbID}'" class='btn btn-primary' href="#">Movie Details</a>
+              </div>
+          </div>
+      `
+      });
 
-    <script>
-    $('#butt').click(function(){
-        let movieSearch = $('#searchText').val()
-        // console.log($('#searchText').val());
-        console.log(movieSearch);
-        getMovies(movieSearch);
-        });
-
-        function getMovies(movieSearch){
-        axios.get('http://www.omdbapi.com/?s='+movieSearch+'&apikey=13b99c79')
-        .then((response)=>{
-        console.log(response);
-        let movies = response.data.Search;
-        console.log(movies)
-        let output ='';
-        $.each(movies, (index, movie)=>{
-            output +=`
-            <div class="col-md-4">
-                <div class="well text-center">
-                <img src='${movie.Poster}'>
-                <h5>${movie.Title}</h5>
-                <a onclick="'${movie.imdbID}'" class='btn btn-primary' href="#">Movie Details</a>
-                </div>
-            </div>
-        `
-        });
-
-        console.log(output);
-        $('#movies').html(output);
-        console.log("plup")
-        })
-        .catch((err) =>{
-            console.log(err);
-        })
-    }
-    </script>*@
-
+      console.log(output);
+      $('#movies').html(output);
+      console.log("plup")
+      })
+      .catch((err) =>{
+          console.log(err);
+      })
+  }
+  </script>*@

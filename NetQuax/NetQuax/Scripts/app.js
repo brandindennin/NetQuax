@@ -89,3 +89,21 @@ function showDetailModal(id) {
   alert("showing modal");
   $('#modal-movieDetails-' + id).modal('show');
 }
+
+function ValidateSearchString() {
+  var searchString = $('#searchString').val();
+  var errorFlag = false;
+  if (searchString == "") {
+    alert("enter a value to search by");
+    errorFlag = true;
+  }
+  return !errorFlag;
+}
+
+function HandleSearchJson(e) {
+  alert(e.Html);
+  $('#myMainBody').fadeOut(200, function () {
+    this.innerHTML = e.Html;
+  });
+  $('#myMainBody').fadeIn(200)
+}

@@ -36,7 +36,7 @@ namespace NetQuax.Controllers
     /// <summary cref="User" >">
     /// Adds A new user based upon inputs from add user form
     /// </summary>
-    public ActionResult AddUser(FormCollection form)
+    /*public ActionResult AddUser(FormCollection form)
     {
       string detectedUserName = string.Empty;
       string detectedPassword = string.Empty;
@@ -172,13 +172,13 @@ namespace NetQuax.Controllers
             conn.Close();
         }*/
         //TODO: return home view
-      }
+      /*}
       else
       {
         //TODO: Return Error View
       }
       return View("Index", new NetQuax.Models.HomePageModel());
-    }
+    }*/
 
     // Method to be called when user checks out a movie
     public ActionResult Checkout(FormCollection form)

@@ -153,7 +153,7 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _rating = (string)reader[0];
+                            _rating = (float)reader[0];
                         }
                         conn.Close();
                     }
@@ -176,7 +176,7 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _price = (string)reader[0];
+                            _price = (int)reader[0];
                         }
                         conn.Close();
                     }
@@ -184,7 +184,7 @@ namespace NetQuax.Entities
                 return _price;
             }
         }
-        public string YearReleased
+        public int YearReleased
         {
             get
             {
@@ -199,7 +199,7 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _yearReleased = (string)reader[0];
+                            _yearReleased = (int)reader[0];
                         }
                         conn.Close();
                     }

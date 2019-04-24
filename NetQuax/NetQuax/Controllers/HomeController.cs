@@ -370,7 +370,7 @@ namespace NetQuax.Controllers
     {
       Session["UserName"] = null;
       //TODO return home view
-      return null;
+      return View("Index");
     }
 
     public string RenderRazorViewToString(string viewName, object model)

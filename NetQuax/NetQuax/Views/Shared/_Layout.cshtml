@@ -21,19 +21,25 @@
             NetQuax
           </a>
           <ul class="dropdown-menu">
-            <li onclick="showSignInModal(@Session["User"])"><strong><a href="#"> @(Session["User"] != null ? "Hello, " : String.Empty)</strong><span style='color:blue;'> @( Session["User"] != null ? "" + Session["User"].ToString() : "Sign in") </span></a></li>
-
-            @{
-              if (Session["UserId"] != null && (long)Session["UserId"] > 0)
-              {
-                <li><a href="#">Profile</a></li>
-                @Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
+              @{ if (Session["UserId"] == null)
+                  {
+                      <li onclick="showSignInModal(@Session["User"])"><a href="#"> @(Session["User"] != null ? "Hello, " : String.Empty) @( Session["User"] != null ? "" + Session["User"].ToString() : "Sign in")</a></li>
+                      <li onclick="showCreateAccountModal(@Session["User"])"><a href="#">Create an account</a></li>
+                  }
               }
-            }
-            <li onclick="showCreateAccountModal(@Session["User"])"><a href="#">Create an account</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Sign Out</a></li>
+
+              @{
+                  if (Session["UserId"] != null && (long)Session["UserId"] > 0)
+                  {
+                      <li><a href="#">@Session["User"].ToString()</a></li>
+                      <li><a href="#">Sign Out</a></li>
+                      @Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
+                  }
+              }
+             
+              <!--<li><a href="#">Settings</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Sign Out</a></li> -->
           </ul>
         </li>
         <li><a href="@Url.Action("Index", "Home")">Home</a></li>

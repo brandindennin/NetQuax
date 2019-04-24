@@ -163,6 +163,7 @@
     <Compile Include="Models\BrowseModel.cs" />
     <Compile Include="Models\HomePageModel.cs" />
     <Compile Include="Models\MovieDetailsModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\UserDetailsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -178,18 +179,40 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\1c53a920619baa53434869e13d0224c0.png" />
-    <Content Include="images\ad74acb38bcf6ffc00001566478d4183.png" />
+    <Content Include="images\Alien.jpg" />
     <Content Include="images\American Hustle.jpg" />
+    <Content Include="images\Back to the Future.jpg" />
+    <Content Include="images\Black Swan.jpg" />
+    <Content Include="images\Cast Away.jpg" />
+    <Content Include="images\Dr. StrangeLove.jpg" />
     <Content Include="images\duckboi.png" />
-    <Content Include="images\e5c4b2e7bfda89c5a14d27c3a8821178.png" />
+    <Content Include="images\Ghost.jpg" />
+    <Content Include="images\Home Alone.jpg" />
+    <Content Include="images\How To Train Your Dragon.jpg" />
     <Content Include="images\Idiocracy.jpg" />
+    <Content Include="images\Inception.jpg" />
+    <Content Include="images\Jaws.jpg" />
     <Content Include="images\movie-placeholder.jpg" />
     <Content Include="images\netquaximagev3.jpg" />
+    <Content Include="images\Pretty Woman.jpg" />
+    <Content Include="images\Problem Child.jpg" />
     <Content Include="images\Psycho.jpg" />
     <Content Include="images\Raiders of the Lost Ark.jpg" />
+    <Content Include="images\Rocky.jpg" />
+    <Content Include="images\Saturday Night Fever.jpg" />
+    <Content Include="images\Scarface.jpg" />
+    <Content Include="images\Snakes on a Plan.jpg" />
     <Content Include="images\Snakes On A Plane.jpg" />
+    <Content Include="images\Tangled Ever After.jpg" />
+    <Content Include="images\Taxi Driver.jpg" />
+    <Content Include="images\The Apartment.jpg" />
+    <Content Include="images\The Deer Hunter.jpg" />
+    <Content Include="images\The Godfather.jpg" />
     <Content Include="images\The Grinch.jpg" />
+    <Content Include="images\The Patriot.jpg" />
+    <Content Include="images\The Shining.jpg" />
+    <Content Include="images\The Terminator.jpg" />
+    <Content Include="images\Top Gun.jpg" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="ApplicationInsights.config">
@@ -226,12 +249,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\movieDetails.cshtml" />
     <Content Include="Views\Home\modal-AddUserAccount.cshtml" />
     <Content Include="Views\Home\userDetails.cshtml" />
-
+    <Content Include="Views\Home\_browseMoviesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

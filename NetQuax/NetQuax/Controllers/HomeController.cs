@@ -1,8 +1,11 @@
 ﻿using NetQuax.Entities;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI;
 using System.Data.SqlClient;
-
+using System.Text;
+using System.IO;
+using System.Collections.Generic;
 
 namespace NetQuax.Controllers
 {
@@ -303,11 +306,87 @@ namespace NetQuax.Controllers
       return valid;
     }
 
+    public JsonResult SearchMovies(FormCollection form)
+    {
+      string detectedSearchString = string.Empty;
+      string detectedCategory = string.Empty;
+      List<Movie> filteredMovies = new List<Movie>();
+      if(form != null)
+      {
+        if(form.AllKeys.Contains("SearchString"))
+        {
+          detectedSearchString = form["SearchString"];
+        }
+        if(form.AllKeys.Contains("SearchCategory"))
+        {
+          detectedCategory = form["SearchCategory"];
+        }
+      }
+
+      MovieList movies = new MovieList();
+
+      if(detectedCategory == "Actor")
+      {
+        foreach(Movie m in movies.AllMovies.Where(x => x.Actor.ToLower().Trim().Contains(detectedSearchString.ToLower().Trim())) )
+        {
+          Movie newMovie = new Movie(m.MovieId);
+          filteredMovies.Add(newMovie);
+        }
+      }
+      if (detectedCategory == "Title")
+      {
+        foreach (Movie m in movies.AllMovies.Where(x => x.Title.ToLower().Trim().Contains(detectedSearchString.ToLower().Trim())))
+        {
+          Movie newMovie = new Movie(m.MovieId);
+          filteredMovies.Add(newMovie);
+        }
+      }
+      if (detectedCategory == "Genre")
+      {
+        foreach (Movie m in movies.AllMovies.Where(x => x.Title.ToLower().Trim().Contains(detectedSearchString.ToLower().Trim())))
+        {
+          Movie newMovie = new Movie(m.MovieId);
+          filteredMovies.Add(newMovie);
+        }
+      }
+
+
+
+      string html = RenderRazorViewToString("/Views/Home/_browseMoviesPartial.cshtml", new NetQuax.Models.SearchModel(filteredMovies));
+      return Json(new { Html = html });
+    }
+
+    public JsonResult SearchByActor(FormCollection form)
+    {
+      return null;
+    }
+
+    public JsonResult SearchByGenre(FormCollection form)
+    {
+      return null;
+    }
+
     public ActionResult SignOut()
     {
       Session["UserName"] = null;
       //TODO return home view
       return null;
     }
+
+    public string RenderRazorViewToString(string viewName, object model)
+    {
+      ViewData.Model = model;
+      using (var sw = new StringWriter())
+      {
+        var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext,
+                                                                 viewName);
+        var viewContext = new ViewContext(ControllerContext, viewResult.View,
+                                     ViewData, TempData, sw);
+        viewResult.View.Render(viewContext, sw);
+        viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+        return sw.GetStringBuilder().ToString();
+      }
+    }
   }
+
 }

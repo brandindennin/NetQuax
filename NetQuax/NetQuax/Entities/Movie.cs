@@ -138,7 +138,30 @@ namespace NetQuax.Entities
                 return _actor;
             }
         }
-        public float Rating
+        public string Director
+        {
+          get
+          {
+            if (_title == null && _movieId > 0)
+            {
+              SqlDataReader reader = null;
+              using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+              {
+                conn.Open();
+                string queryString = string.Format("SELECT director from MOVIES WHERE movieId = {0}", _movieId);
+                SqlCommand cmd = new SqlCommand(queryString, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                  _director = (string)reader[0];
+                }
+                conn.Close();
+              }
+            }
+            return _director;
+          }
+        }
+    public float Rating
         {
             get
             {
@@ -153,7 +176,7 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _rating = (string)reader[0];
+                            _rating = (float)reader[0];
                         }
                         conn.Close();
                     }
@@ -176,7 +199,7 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _price = (string)reader[0];
+                            _price = (int)reader[0];
                         }
                         conn.Close();
                     }
@@ -184,7 +207,7 @@ namespace NetQuax.Entities
                 return _price;
             }
         }
-        public string YearReleased
+        public int YearReleased
         {
             get
             {
@@ -199,7 +222,7 @@ namespace NetQuax.Entities
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            _yearReleased = (string)reader[0];
+                            _yearReleased = (int)reader[0];
                         }
                         conn.Close();
                     }

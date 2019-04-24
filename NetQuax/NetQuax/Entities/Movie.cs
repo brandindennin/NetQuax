@@ -138,7 +138,30 @@ namespace NetQuax.Entities
                 return _actor;
             }
         }
-        public float Rating
+        public string Director
+        {
+          get
+          {
+            if (_title == null && _movieId > 0)
+            {
+              SqlDataReader reader = null;
+              using (SqlConnection conn = new SqlConnection(Globals.connectionString))
+              {
+                conn.Open();
+                string queryString = string.Format("SELECT director from MOVIES WHERE movieId = {0}", _movieId);
+                SqlCommand cmd = new SqlCommand(queryString, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                  _director = (string)reader[0];
+                }
+                conn.Close();
+              }
+            }
+            return _director;
+          }
+        }
+    public float Rating
         {
             get
             {

@@ -66,8 +66,6 @@ function ValidateSignIn() {
 }
 
 function HandleSignIn(e) {
-  alert("Handel");
-  alert(e.ErrorMessage);
   if (e.Valid == true) {
     $('#modal-AddUser').modal('hide');
     location.reload();

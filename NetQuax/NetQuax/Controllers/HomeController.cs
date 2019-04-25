@@ -343,12 +343,21 @@ namespace NetQuax.Controllers
       }
       if (detectedCategory == "Genre")
       {
-        foreach (Movie m in movies.AllMovies.Where(x => x.Title.ToLower().Trim().Contains(detectedSearchString.ToLower().Trim())))
+        foreach (Movie m in movies.AllMovies.Where(x => x.Genre.ToLower().Trim().Contains(detectedSearchString.ToLower().Trim())))
         {
           Movie newMovie = new Movie(m.MovieId);
           filteredMovies.Add(newMovie);
         }
       }
+      if (detectedCategory == "Director")
+      {
+        foreach (Movie m in movies.AllMovies.Where(x => x.Director.ToLower().Trim().Contains(detectedSearchString.ToLower().Trim())))
+        {
+          Movie newMovie = new Movie(m.MovieId);
+          filteredMovies.Add(newMovie);
+        }
+      }
+
 
 
 
@@ -369,10 +378,40 @@ namespace NetQuax.Controllers
     public ActionResult SignOut()
     {
       Session["UserName"] = null;
-      //TODO return home view
+
+      Session["User"] = null;
+
       return View("Index");
     }
 
+    public ActionResult AddToCart(FormCollection form)
+    {
+      string detectedMovieId = string.Empty;
+      if (Session["Cart"] == null)
+      {
+        Session["Cart"] = new List<Movie>();
+      }
+      if(form != null)
+      {
+        if (form.AllKeys.Contains("MovieId"))
+        {
+          detectedMovieId = form["MovieId"];
+        }
+      }
+
+      long MovieId = long.MinValue;
+      long.TryParse(detectedMovieId, out MovieId);
+
+      if(MovieId > 0)
+      {
+        List<Movie> temp = (List<Movie>) Session["Cart"];
+        temp.Add(new Movie(MovieId));
+        Session["Cart"] = temp;
+          
+        
+      }
+      return null; 
+    }
     public string RenderRazorViewToString(string viewName, object model)
     {
       ViewData.Model = model;

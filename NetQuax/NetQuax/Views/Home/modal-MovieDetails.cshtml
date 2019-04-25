@@ -1,77 +1,78 @@
 ﻿@model NetQuax.Models.MovieDetailsModel
 <div id="modal-movieDetails-@Model.MovieId" class="modal fade" tabindex="-1" role="dialog">
- <style>
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-header {
+  <style>
+    header {
+  background-color: #666;
   padding: 30px;
-  background-image: linear-gradient(-90deg, white, lightblue );
   text-align: center;
   font-size: 35px;
   color: white;
-  text-shadow: 0 0 3px lightblue;
 }
+    div.pic {
+      padding: 50px;
+      width: 50%
+    }
 
-div.pic {
-  padding: 50px;
-  width:50%
-} 
+    div.description {     
+      width: 50%;
+      border: 3px solid blue;
+    }
 
-div.description {
-  position: absolute;
-  right: 700px; 
-  width: 50%
-  border: 3px solid blue;
-} 
-	 .column3 {
-  width: 100%
-  padding: 20px;
-}
-	 .column4 {
-  width: 100%
-  padding: 20px;
-}
-	 .column5 {
-  width: 100%
-  padding: 20px;
-}
-	
-</style>
-  <div class="modal-dialog modal-lg" role="document">
+    .column3 {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .column4 {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .column5 {
+      width: 100%;
+      padding: 20px;
+    }
+  </style>
+  <div class="modal-dialog modal-dialog-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title"><b>@Model.Movie.Title</b></h3>
       </div>
       <div class="modal-body">
-        <div class="column" style="background-color:#aaa;">
-          <p style="float: left;"><img style="width:300px; height:450px;"  src="@("/images/" + Model.Movie.Title + ".jpg")" alt="MovieImage"></p>
-          <p><i> @(Model != null && Model.Movie != null ? Model.Movie.Description : string.Empty) </i></p>
+
+        <div class="pic">
+          <p><img src=" @("/images/" + Model.Movie.Title + ".jpg")" alt="MovieImage"></p>
         </div>
 
-        <div class="column" style="background-color:#FFF380;">
-          <p>Director: @(Model != null && Model.Movie != null ? Model.Movie.Director : string.Empty) </p>
-          <p>Genre: @(Model != null && Model.Movie != null ? Model.Movie.Mode : string.Empty)</p>
-          <p>Actors: @(Model != null && Model.Movie != null ? Model.Movie.Actor : string.Empty)</p>
+        <div class="description">
+          <p> @Model.Movie.Description</p>
         </div>
-        <div class="column" style="background-color:#FFF380;">
-          <p>Year: @(Model != null && Model.Movie != null ? Model.Movie.YearReleased : string.Empty)</p>
-          <p>Customer Rating @(Model != null && Model.Movie != null ? Model.Movie.Rating.ToString() : string.Empty)</p>
-          <p>HD</p>
+
+        <div class="column3">
+          <p><b>Director:&nbsp;</b>@Model.Movie.Director</p>
+          <p><b>Genre:&nbsp;</b>@Model.Movie.Genre</p>
+          <p><b>Actor:&nbsp;</b>@Model.Movie.Actor</p>
+
         </div>
-        <div style="margin-bottom:10px;" class="column" style="background-color:#FFF380;">
-          <p>Price: @(Model != null && Model.Movie != null ? Model.Movie.Price.ToString() : string.Empty)</p>
+
+        <div class="column4">
+          <p><b>Year:&nbsp;</b>@Model.Movie.YearReleased</p>
+          <p><b>Rating:&nbsp;</b>@Model.Movie.Rating</p>
+          <p><b>Mode:</b> HD</p>
+        </div>
+
+        <div class="column5">
+          <p>$@Model.Movie.Price.00</p>
           <p>Hatchling</p>
         </div>
-      </div>
 
-      <div class="modal-footer">
-        <div id="signIn-Error" class="margin-bottom-10" style="text-align: center;">
-          <p id="addUser-ErrorMessage"></p>
+        <div class="modal-footer">
+          <div id="signIn-Error" class="margin-bottom-10" style="text-align: center;">
+            <p id="addUser-ErrorMessage"></p>
+          </div>
+          <button type="button" onclick="$('AddToCart').submit()" class="btn btn-primary">Add To Cart</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
-        <button type="button" onclick="$('AddToCart').submit()" class="btn btn-primary">Add To Cart</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

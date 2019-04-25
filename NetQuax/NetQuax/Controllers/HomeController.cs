@@ -1,11 +1,9 @@
 ﻿using NetQuax.Entities;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI;
-using System.Data.SqlClient;
-using System.Text;
-using System.IO;
-using System.Collections.Generic;
 
 namespace NetQuax.Controllers
 {
@@ -131,7 +129,7 @@ namespace NetQuax.Controllers
         //TODO: Error
       }
       if (!errorFlag)
-      
+
       {
         using (SqlConnection conn = new SqlConnection(Globals.connectionString))
         {
@@ -174,14 +172,14 @@ namespace NetQuax.Controllers
             }
             conn.Close();
         }*/
-        //TODO: return home view
-      /*}
-      else
-      {
-        //TODO: Return Error View
-      }
-      return View("Index", new NetQuax.Models.HomePageModel());
-    }*/
+    //TODO: return home view
+    /*}
+    else
+    {
+      //TODO: Return Error View
+    }
+    return View("Index", new NetQuax.Models.HomePageModel());
+  }*/
 
     // Method to be called when user checks out a movie
     public ActionResult Checkout(FormCollection form)
@@ -235,19 +233,19 @@ namespace NetQuax.Controllers
       string detectedPassword = string.Empty;
       string errorMessage = string.Empty;
       bool errorFlag = false;
-      bool isSignedIn = false ;
+      bool isSignedIn = false;
 
       if (form != null)
       {
-        if(form.AllKeys.Contains("Username"))
+        if (form.AllKeys.Contains("Username"))
         {
           detectedUserName = form["Username"];
         }
-        if(form.AllKeys.Contains("Password"))
+        if (form.AllKeys.Contains("Password"))
         {
           detectedPassword = form["Password"];
         }
-      }      
+      }
 
       if (detectedUserName == string.Empty)
       {
@@ -261,7 +259,7 @@ namespace NetQuax.Controllers
       if (!errorFlag)
       {
         isSignedIn = ValidateUser(detectedUserName, detectedPassword);
-        if(isSignedIn)
+        if (isSignedIn)
         {
           errorMessage = "Successfully signed in!";
         }
@@ -311,13 +309,13 @@ namespace NetQuax.Controllers
       string detectedSearchString = string.Empty;
       string detectedCategory = string.Empty;
       List<Movie> filteredMovies = new List<Movie>();
-      if(form != null)
+      if (form != null)
       {
-        if(form.AllKeys.Contains("SearchString"))
+        if (form.AllKeys.Contains("SearchString"))
         {
           detectedSearchString = form["SearchString"];
         }
-        if(form.AllKeys.Contains("SearchCategory"))
+        if (form.AllKeys.Contains("SearchCategory"))
         {
           detectedCategory = form["SearchCategory"];
         }
@@ -325,9 +323,9 @@ namespace NetQuax.Controllers
 
       MovieList movies = new MovieList();
 
-      if(detectedCategory == "Actor")
+      if (detectedCategory == "Actor")
       {
-        foreach(Movie m in movies.AllMovies.Where(x => x.Actor.ToLower().Trim().Contains(detectedSearchString.ToLower().Trim())) )
+        foreach (Movie m in movies.AllMovies.Where(x => x.Actor.ToLower().Trim().Contains(detectedSearchString.ToLower().Trim())))
         {
           Movie newMovie = new Movie(m.MovieId);
           filteredMovies.Add(newMovie);
@@ -357,8 +355,14 @@ namespace NetQuax.Controllers
           filteredMovies.Add(newMovie);
         }
       }
-
-
+      if (detectedCategory == "Theme")
+      {
+        foreach (Movie m in movies.AllMovies.Where(x => x.Genre.ToLower().Trim().Contains(detectedSearchString.ToLower().Trim())))
+        {
+          Movie newMovie = new Movie(m.MovieId);
+          filteredMovies.Add(newMovie);
+        }
+      }
 
 
       string html = RenderRazorViewToString("/Views/Home/_browseMoviesPartial.cshtml", new NetQuax.Models.SearchModel(filteredMovies));
@@ -391,7 +395,7 @@ namespace NetQuax.Controllers
       {
         Session["Cart"] = new List<Movie>();
       }
-      if(form != null)
+      if (form != null)
       {
         if (form.AllKeys.Contains("MovieId"))
         {
@@ -402,16 +406,15 @@ namespace NetQuax.Controllers
       long MovieId = long.MinValue;
       long.TryParse(detectedMovieId, out MovieId);
 
-      if(MovieId > 0)
+      if (MovieId > 0)
       {
-        List<Movie> temp = (List<Movie>) Session["Cart"];
+        List<Movie> temp = (List<Movie>)Session["Cart"];
         temp.Add(new Movie(MovieId));
         Session["Cart"] = temp;
-          
-        
       }
-      return null; 
+      return View("Index", new NetQuax.Models.HomePageModel());
     }
+
     public string RenderRazorViewToString(string viewName, object model)
     {
       ViewData.Model = model;
@@ -427,5 +430,4 @@ namespace NetQuax.Controllers
       }
     }
   }
-
 }

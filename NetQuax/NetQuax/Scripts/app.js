@@ -1,10 +1,8 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
   $('.dropdown-toggle').dropdown()
 });
 
 function ValidateAddUser() {
-
   var errorMessage = "";
   var errorFlag = false;
   var errorPanel = $('#addUser-Error');
@@ -40,16 +38,15 @@ function showErrorMessage(errorMessage, errorPanel) {
 }
 function searchMovies() {
   var searchString = $('#searchVal').val();
-
 }
 
 function ShowBillingInfo(element) {
-    if ($(element).val() > 1) {
-        $('#billingInfoRow').fadeIn(200);
-    }
-    if ($(element).val() == 1){
-        $('#billingInfoRow').fadeOut(200);
-    }
+  if ($(element).val() > 1) {
+    $('#billingInfoRow').fadeIn(200);
+  }
+  if ($(element).val() == 1) {
+    $('#billingInfoRow').fadeOut(200);
+  }
 }
 
 function ValidateSignIn() {
@@ -84,7 +81,6 @@ function showCreateAccountModal(user) {
 }
 
 function showDetailModal(id) {
-  alert("showing modal");
   $('#modal-movieDetails-' + id).modal('show');
 }
 
@@ -99,9 +95,16 @@ function ValidateSearchString() {
 }
 
 function HandleSearchJson(e) {
-  alert(e.Html);
   $('#myMainBody').fadeOut(200, function () {
     this.innerHTML = e.Html;
   });
   $('#myMainBody').fadeIn(200)
+}
+
+function AddToCartSuccess(e) {
+  location.reload();
+}
+
+function showCartModal() {
+  $('#modal-ShoppingCart').modal('show');
 }

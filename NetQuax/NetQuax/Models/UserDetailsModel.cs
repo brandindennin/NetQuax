@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace NetQuax.Models
+﻿namespace NetQuax.Models
 {
   public class UserDetailsModel
   {
@@ -20,7 +15,7 @@ namespace NetQuax.Models
     {
       get
       {
-        if(_user== null && _userId > 0)
+        if (_user == null && _userId > 0)
         {
           _user = new NetQuax.Entities.User(_userId);
         }

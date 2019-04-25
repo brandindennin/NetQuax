@@ -2,18 +2,19 @@
 <div id="modal-movieDetails-@Model.MovieId" class="modal fade" tabindex="-1" role="dialog">
   <style>
     header {
-  background-color: #666;
-  padding: 30px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
-}
+      background-color: #666;
+      padding: 30px;
+      text-align: center;
+      font-size: 35px;
+      color: white;
+    }
+
     div.pic {
       padding: 50px;
       width: 50%
     }
 
-    div.description {     
+    div.description {
       width: 50%;
       border: 3px solid blue;
     }
@@ -33,7 +34,7 @@
       padding: 20px;
     }
   </style>
-  <div class="modal-dialog modal-dialog-lg" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title"><b>@Model.Movie.Title</b></h3>
@@ -52,7 +53,6 @@
           <p><b>Director:&nbsp;</b>@Model.Movie.Director</p>
           <p><b>Genre:&nbsp;</b>@Model.Movie.Genre</p>
           <p><b>Actor:&nbsp;</b>@Model.Movie.Actor</p>
-
         </div>
 
         <div class="column4">
@@ -70,7 +70,21 @@
           <div id="signIn-Error" class="margin-bottom-10" style="text-align: center;">
             <p id="addUser-ErrorMessage"></p>
           </div>
-          <button type="button" onclick="$('AddToCart').submit()" class="btn btn-primary">Add To Cart</button>
+          @using (Ajax.BeginForm("AddToCart", "Home", new
+                AjaxOptions
+          {
+            OnSuccess = "AddToCartSuccess"
+          },
+          new
+          {
+            id = "AddToCart-" + Model.MovieId,
+            name = "AddToCart"
+          }
+          ))
+          {
+            <input type="hidden" name="MovieId" value="@Model.MovieId">
+          }
+          <button type="button" onclick="$('#AddToCart-' + @Model.MovieId).submit()" class="btn btn-primary">Add To Cart</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>

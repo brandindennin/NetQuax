@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-
 
 namespace NetQuax.Entities
 {
   public class MovieList : IMovieList
   {
-    List<Movie> _allMovies;
+    private List<Movie> _allMovies;
 
-    public MovieList ()
+    public MovieList()
     {
       _allMovies = new List<Movie>();
     }
@@ -20,7 +16,7 @@ namespace NetQuax.Entities
     {
       get
       {
-        if (_allMovies.Count == 0 )
+        if (_allMovies.Count == 0)
         {
           SqlDataReader reader = null;
           using (SqlConnection conn = new SqlConnection(Globals.connectionString))
@@ -33,7 +29,6 @@ namespace NetQuax.Entities
             {
               Movie movie = new Movie((long)reader[0]);
               _allMovies.Add(movie);
-
             }
             conn.Close();
           }

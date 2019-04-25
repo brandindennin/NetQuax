@@ -35,7 +35,7 @@ namespace NetQuax.Entities
       _yearReleased = int.MinValue;
       //And many more
     }
-    
+
     public string Genre
     {
       get

@@ -1,5 +1,4 @@
 ﻿using System.Data.SqlClient;
-using System.Web.Mvc;
 
 namespace NetQuax.Entities
 {
@@ -20,6 +19,7 @@ namespace NetQuax.Entities
     {
       _userId = userId;
     }
+
     //test update
     /* RETRIEVING THE USERNAME FROM THE DATABASE */
 
@@ -109,6 +109,7 @@ namespace NetQuax.Entities
         return _password;
       }
     }
+
     public long UserType
     {
       get
@@ -148,7 +149,6 @@ namespace NetQuax.Entities
         return 1;
       }
     }
-
 
     public Address GetAddressByUser(int userId)
     {

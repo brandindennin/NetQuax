@@ -1,5 +1,4 @@
 ﻿using NetQuax.Entities;
-using System.Collections.Generic;
 
 namespace NetQuax.Models
 {

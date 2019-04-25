@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace NetQuax.Entities
 {
@@ -16,7 +12,7 @@ namespace NetQuax.Entities
     private string _expDate;
     private int _securityCode;
 
-    #endregion
+    #endregion fields
 
     public BillingInformation(int billingId)
     {
@@ -48,7 +44,7 @@ namespace NetQuax.Entities
           }
           //TODO: Replace this with matching data
         }
-        return _cardHolder;      
+        return _cardHolder;
       }
     }
 
@@ -73,7 +69,6 @@ namespace NetQuax.Entities
           }
         }
         return _cardNumber;
-
       }
     }
 
@@ -83,8 +78,6 @@ namespace NetQuax.Entities
       {
         if (_expDate == null && _billingInformationId > 0)
         {
-
-
           SqlDataReader reader = null;
           using (SqlConnection conn = new SqlConnection(Globals.connectionString))
           {

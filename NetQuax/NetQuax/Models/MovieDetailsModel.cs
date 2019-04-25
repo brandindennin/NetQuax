@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace NetQuax.Models
+﻿namespace NetQuax.Models
 {
   public class MovieDetailsModel
   {
@@ -20,7 +15,7 @@ namespace NetQuax.Models
     {
       get
       {
-        if(_movieId > 0 && _movie == null)
+        if (_movieId > 0 && _movie == null)
         {
           _movie = new NetQuax.Entities.Movie(_movieId);
         }

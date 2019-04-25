@@ -32,7 +32,7 @@
                   if (Session["UserId"] != null && (long)Session["UserId"] > 0)
                   {
                       <li><a href="#">@Session["User"].ToString()</a></li>
-                      <li><a href="#">Sign Out</a></li>
+                      <li><a href="">Sign Out</a></li>
                       @Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
                   }
               }

@@ -29,11 +29,11 @@
             }
 
             @{
-              if (Session["UserId"] != null && (long)Session["UserId"] > 0)
+              if (Session["User"] != null && Session["UserId"] != null && (long)Session["UserId"] > 0)
               {
                 <li><a href="#">@Session["User"].ToString()</a></li>
                 <li onclick="showCartModal()"><a href="#">Shopping Cart</a></li>
-                <li><a href="">Sign Out</a></li>
+                <li><a href="@Url.Action("SignOut" ,"Home")">Sign Out</a></li>
 
               }
             }

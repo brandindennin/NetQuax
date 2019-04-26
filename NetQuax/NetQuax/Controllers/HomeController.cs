@@ -385,7 +385,7 @@ namespace NetQuax.Controllers
 
       Session["User"] = null;
 
-      return View("Index");
+      return View("Index", new NetQuax.Models.HomePageModel());
     }
 
     public ActionResult AddToCart(FormCollection form)

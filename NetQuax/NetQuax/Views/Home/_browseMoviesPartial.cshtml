@@ -1,17 +1,18 @@
-﻿@model NetQuax.Models.SearchModel
+﻿
+@model NetQuax.Models.SearchModel
 <div class="row">
-  @{ #line 2 "C:\NetQuax\NetQuax\NetQuax\NetQuax\Views\Home\_browseMoviesPartial.cshtml"
-          /**/
+    @{
 
-          if (Model != null && Model.Movies != null)
-          {
+
+        if (Model != null && Model.Movies != null)
+        {
             foreach (NetQuax.Entities.Movie m in Model.Movies)
             {
-              <div onclick="showDetailModal(@m.MovieId)" style="text-align:center;" class="col-sm-4 margin-bottom-20">
-                <img style="width: 200px; height: 300px; text-align:center;" src="@("/images/" + m.Title + ".jpg")" />
-              </div>
-              @Html.Partial("modal-MovieDetails", new NetQuax.Models.MovieDetailsModel((int)m.MovieId))
+                <div onclick="showDetailModal(@m.MovieId)" style="text-align:center;" class="col-sm-4 margin-bottom-20">
+                    <img style="width: 200px; height: 300px; text-align:center;" src="@("/images/" + m.Title + ".jpg")" />
+                </div>
+                @Html.Partial("modal-MovieDetails", new NetQuax.Models.MovieDetailsModel((int)m.MovieId))
             }
-          }
-  }
+        }
+    }
 </div>

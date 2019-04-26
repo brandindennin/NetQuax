@@ -111,40 +111,40 @@ All inserts under this comment are additions
 */
 
 
-INSERT INTO MOVIES VALUES(‘The Color Purple’, ‘A black Southern woman struggles to find her identity after suffering abuse from her father and others over four decades’, ‘Steven Spielberg’, ‘Drama’, ‘Danny Glover’, 1985, 7, ‘SD’, 4.99, 1)
+INSERT INTO MOVIES VALUES('The Color Purple', 'A black Southern woman struggles to find her identity after suffering abuse from her father and others over four decades', 'Steven Spielberg', 'Drama', 'Danny Glover', 1985, 7, 'SD', 4.99, 1)
 
 
-INSERT INTO MOVIES VALUES(‘Beetlejuice’, ‘The spirits of a deceased couple are harassed by an unbearable family that has moved into their home and hire a malicious spirit to drive them out’, ‘Tim Burton’, ‘Comedy’, ‘Alec Baldwin’,1988, 7, ‘HD’, 3.99, 1)
+INSERT INTO MOVIES VALUES('Beetlejuice', 'The spirits of a deceased couple are harassed by an unbearable family that has moved into their home and hire a malicious spirit to drive them out', 'Tim Burton', 'Comedy', 'Alec Baldwin',1988, 7, 'HD', 3.99, 1)
 
-INSERT INTO MOVIES VALUES(‘Stripes’, ‘Two friends who are dissatisfied with their jobs decide to join the army for a bit of fun’, ‘Ivan Reitman’, ‘Comedy’, ‘Bill Murray’, 1981, 6.9, HD’, 2.99, 0)
+INSERT INTO MOVIES VALUES('Stripes', 'Two friends who are dissatisfied with their jobs decide to join the army for a bit of fun', 'Ivan Reitman', 'Comedy', 'Bill Murray', 1981, 6.9, 'HD', 2.99, 0)
 
-INSERT INTO MOVIES VALUES(‘Dead Poets Society’, ‘English teacher John Keating inspires his students to look at poetry with a different perspective of authentic knowledge and feelings’, ‘Peter Weir’, ‘Drama’, ‘Robin Williams’, 1989, 8, ‘HD’, 2.99, 2)
+INSERT INTO MOVIES VALUES('Dead Poets Society', 'English teacher John Keating inspires his students to look at poetry with a different perspective of authentic knowledge and feelings', 'Peter Weir', 'Drama', 'Robin Williams', 1989, 8, 'HD', 2.99, 2)
 
-INSERT INTO MOVIES VALUES(‘The Little Mermaid’, ‘A mermaid princess makes a Faustian bargain with an unscrupulous sea witch in order to meet a human prince on land’, ‘Ron Clements’, ‘Romance’, ‘Rene Auberjonois’, 1989, 7, ‘SD’, 2.99, 2)
-
-
-INSERT INTO MOVIES VALUES(‘The Silence of the Lambs’, ‘A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer a madman who skins his victims’, ‘Jonathan Demme’, ‘Horror’, ‘Jodie Foster’,1991, 8, ‘HD’, 4.99, 2)
-
-INSERT INTO MOVIES VALUES(‘Aladdin’, ‘When a street urchin finds a lamp with a genie inside he uses the lamp to turn himself into a prince in order to win the heart of a beautiful princess But an evil vizier is after the lamp too’ , ‘Ron Clements’, ‘Family’,  ‘Robin Williams’,1992, 8, ‘SD’, 2.99, 1)
-
-INSERT INTO MOVIES VALUES(‘The Sandlot’, ‘In the summer a new kid in town is taken under the wing of a young baseball prodigy and his rowdy team resulting in many adventures’, ‘David Mickey’, ‘Comedy’, ‘Art LaFleur’, 1993, 7, ‘SD’, 7.99, 0)
-
-INSERT INTO MOVIES VALUES(‘Free Willy’, ‘When a boy learns that a beloved killer whale is to be killed by the aquarium owners the boy risks everything to free the whale’, ‘Simon Wincer’, ‘Adventure’, ‘Jason Richter’ 1993, 5, ‘HD’, 3.99, 1)
-
-INSERT INTO MOVIES VALUES(‘Braveheart’, ‘When his secret bride is executed for assaulting an English soldier who tried to rape her William Wallace begins a revolt against King Edward I of England’, ‘Mel Gibson’, ‘Drama’, ‘James Robinson’, 1995, 8, ‘HD’, 4.99, 1)
-
-INSERT INTO MOVIES VALUES(‘James and the Giant Peach’, ‘An orphan who lives with his two cruel aunts befriends anthropomorphic bugs who live inside a giant peach and they embark on a journey to New York City’, ‘Henry Selick’,  ‘Adventure’, ‘Simon Callow’, 1996, 6, ‘HD’, 6.99, 0)
+INSERT INTO MOVIES VALUES('The Little Mermaid', 'A mermaid princess makes a Faustian bargain with an unscrupulous sea witch in order to meet a human prince on land', 'Ron Clements', 'Romance', 'Rene Auberjonois', 1989, 7, 'SD', 2.99, 2)
 
 
-INSERT INTO MOVIES VALUES(‘Flubber’, ‘An absent minded professor discovers flubber a rubber like super bouncy substance’, ‘Les Mayfield’, ‘Comedy’, ‘Robin Williams’, 1997, 5, ‘SD’, 6.99, 0)
+INSERT INTO MOVIES VALUES('The Silence of the Lambs', 'A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer a madman who skins his victims', 'Jonathan Demme', 'Horror', 'Jodie Foster',1991, 8, 'HD', 4.99, 2)
 
-INSERT INTO MOVIES VALUES(‘Titanic’, ‘A seventeen year old aristocrat falls in love with a kind but poor artist aboard the luxurious ill fated RMS Titanic’, ‘James Cameron’, ‘Romance’, ‘Leonardo DiCaprio’, 1997, 7, ‘SD’, 5.99, 0)
+INSERT INTO MOVIES VALUES('Aladdin', 'When a street urchin finds a lamp with a genie inside he uses the lamp to turn himself into a prince in order to win the heart of a beautiful princess But an evil vizier is after the lamp too' , 'Ron Clements', 'Family',  'Robin Williams',1992, 8, 'SD', 2.99, 1)
 
-INSERT INTO MOVIES VALUES(‘The Truman Show’, ‘An insurance salesman discovers his whole life is actually a reality TV show’, ‘Peter Weir’, ‘Comedy’, ‘Jim Carrey’, 1998, 8, ‘HD’, 4.99, 1)
+INSERT INTO MOVIES VALUES('The Sandlot', 'In the summer a new kid in town is taken under the wing of a young baseball prodigy and his rowdy team resulting in many adventures', 'David Mickey', 'Comedy', 'Art LaFleur', 1993, 7, 'SD', 7.99, 0)
+
+INSERT INTO MOVIES VALUES('Free Willy', 'When a boy learns that a beloved killer whale is to be killed by the aquarium owners the boy risks everything to free the whale', 'Simon Wincer', 'Adventure', 'Jason Richter', 1993, 5, 'HD', 3.99, 1)
+
+INSERT INTO MOVIES VALUES('Braveheart', 'When his secret bride is executed for assaulting an English soldier who tried to rape her William Wallace begins a revolt against King Edward I of England', 'Mel Gibson', 'Drama', 'James Robinson', 1995, 8, 'HD', 4.99, 1)
+
+INSERT INTO MOVIES VALUES('James and the Giant Peach', 'An orphan who lives with his two cruel aunts befriends anthropomorphic bugs who live inside a giant peach and they embark on a journey to New York City', 'Henry Selick',  'Adventure', 'Simon Callow', 1996, 6, 'HD', 6.99, 0)
 
 
-INSERT INTO MOVIES VALUES(‘The Matrix’, ‘A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers’, ‘Lana Wachowski’, ‘Action’, ‘Keanu Reeves’, 1999, 8, ‘SD’, 5.99, 1)
+INSERT INTO MOVIES VALUES('Flubber', 'An absent minded professor discovers flubber a rubber like super bouncy substance', 'Les Mayfield', 'Comedy', 'Robin Williams', 1997, 5, 'SD', 6.99, 0)
 
-INSERT INTO MOVIES VALUES(‘Tarzan’, ‘A man raised by gorillas must decide where he really belongs when he discovers he is a human’, ‘Chris Buck’, ‘Adventure’, ‘Brian Blessed’, 1999, 7, ‘SD’, 4.99, 1)
+INSERT INTO MOVIES VALUES('Titanic', 'A seventeen year old aristocrat falls in love with a kind but poor artist aboard the luxurious ill fated RMS Titanic', 'James Cameron', 'Romance', 'Leonardo DiCaprio', 1997, 7, 'SD', 5.99, 0)
 
-INSERT INTO MOVIES VALUES(‘Big Daddy’, ‘A lazy law school grad adopts a kid to impress his girlfriend but everything doesnt go as planned and he becomes the unlikely foster father’, ‘Dennis Dugan’, ‘Comedy’, ‘Adam Sandler’, 1999, 6, ‘HD’, 4.99, 1)
+INSERT INTO MOVIES VALUES('The Truman Show', 'An insurance salesman discovers his whole life is actually a reality TV show', 'Peter Weir', 'Comedy', 'Jim Carrey', 1998, 8, 'HD', 4.99, 1)
+
+
+INSERT INTO MOVIES VALUES('The Matrix', 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers', 'Lana Wachowski', 'Action', 'Keanu Reeves', 1999, 8, 'SD', 5.99, 1)
+
+INSERT INTO MOVIES VALUES('Tarzan', 'A man raised by gorillas must decide where he really belongs when he discovers he is a human', 'Chris Buck', 'Adventure', 'Brian Blessed', 1999, 7, 'SD', 4.99, 1)
+
+INSERT INTO MOVIES VALUES('Big Daddy', 'A lazy law school grad adopts a kid to impress his girlfriend but everything doesnt go as planned and he becomes the unlikely foster father', 'Dennis Dugan', 'Comedy', 'Adam Sandler', 1999, 6, 'HD', 4.99, 1)

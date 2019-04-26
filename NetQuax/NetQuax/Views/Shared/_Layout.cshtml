@@ -21,25 +21,23 @@
             NetQuax
           </a>
           <ul class="dropdown-menu">
-              @{ if (Session["UserId"] == null)
-                  {
-                      <li onclick="showSignInModal(@Session["User"])"><a href="#"> @(Session["User"] != null ? "Hello, " : String.Empty) @( Session["User"] != null ? "" + Session["User"].ToString() : "Sign in")</a></li>
-                      <li onclick="showCreateAccountModal(@Session["User"])"><a href="#">Create an account</a></li>
-                  }
+            @{ if (Session["UserId"] == null)
+              {
+                <li onclick="showSignInModal(@Session["User"])"><a href="#"> @(Session["User"] != null ? "Hello, " : String.Empty) @( Session["User"] != null ? "" + Session["User"].ToString() : "Sign in")</a></li>
+                <li onclick="showCreateAccountModal(@Session["User"])"><a href="#">Create an account</a></li>
               }
+            }
 
-              @{
-                  if (Session["UserId"] != null && (long)Session["UserId"] > 0)
-                  {
-                      <li><a href="#">@Session["User"].ToString()</a></li>
-                      <li><a href="#">Sign Out</a></li>
-                      @Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
-                  }
+            @{
+              if (Session["UserId"] != null && (long)Session["UserId"] > 0)
+              {
+                <li><a href="#">@Session["User"].ToString()</a></li>
+                <li onclick="showCartModal()"><a href="#">Shopping Cart</a></li>
+                <li><a href="">Sign Out</a></li>
+
               }
-             
-              <!--<li><a href="#">Settings</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Sign Out</a></li> -->
+            }
+
           </ul>
         </li>
         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
@@ -55,9 +53,16 @@
       </form>
     </div>
   </nav>
-
+  @Html.Partial("modal-ShoppingCart")
   @Html.Partial("modal-SignIn")
   @Html.Partial("modal-AddUserAccount")
+  @{
+    if (Session["UserId"] != null && (long)Session["UserId"] > 0)
+    {
+      @Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
+    }
+  }
+
   <div class="top-header"></div>
 
   <div class="container body-content">

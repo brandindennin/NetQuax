@@ -1,0 +1,59 @@
+﻿@{
+  List<NetQuax.Entities.Movie> chosenMovies = new List<NetQuax.Entities.Movie>();
+  Decimal sum = 0;
+  if (Session["Cart"] != null)
+  {
+    chosenMovies = (List<NetQuax.Entities.Movie>)Session["Cart"];
+  }
+  foreach (NetQuax.Entities.Movie m in chosenMovies)
+  {
+    sum = sum + m.Price;
+  }
+}
+
+<div id="modal-ShoppingCart" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><b>Your Cart</b></h3>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+          @{
+            foreach (NetQuax.Entities.Movie m in chosenMovies)
+            {
+              <div class="row margin-bottom-10" style="padding-bottom:5px; border-bottom: 1px solid lightgrey;">
+                <div class="col-sm-4">@m.Title</div>
+                <div class="col-sm-4">$@m.Price.00</div>
+              </div>
+            }
+          }
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
+      <div class=" row margin-top-20">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-4"><b>Total:</b></div>
+
+            <div class="col-sm-4">$@sum.00</div>
+          </div>
+        </div>
+        <div class="col-sm-1">
+        </div>
+        <div id="addUser-Error" class="margin-bottom-10" style="text-align: center;">
+          <p id="addUser-ErrorMessage"></p>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" onclick="$('#AddToCart').submit()" class="btn btn-primary">Continue to Checkout</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

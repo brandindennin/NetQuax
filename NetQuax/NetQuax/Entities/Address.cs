@@ -50,7 +50,7 @@ namespace NetQuax.Entities
             }
             conn.Close();
           }
-        }        
+        }
         return _addressLineOne;
       }
     }
@@ -74,7 +74,7 @@ namespace NetQuax.Entities
             }
             conn.Close();
           }
-        }       
+        }
         return _addressLineTwo;
       }
     }
@@ -94,7 +94,7 @@ namespace NetQuax.Entities
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-              _city= (string)reader[0];
+              _city = (string)reader[0];
             }
             conn.Close();
           }
@@ -147,7 +147,7 @@ namespace NetQuax.Entities
             }
             conn.Close();
           }
-        }        
+        }
         return _zip;
       }
     }

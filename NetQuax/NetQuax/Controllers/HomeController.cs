@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
+using System.Data;
 
 namespace NetQuax.Controllers
 {
@@ -37,7 +38,7 @@ namespace NetQuax.Controllers
     /// <summary cref="User" >">
     /// Adds A new user based upon inputs from add user form
     /// </summary>
-    /*public ActionResult AddUser(FormCollection form)
+    public ActionResult AddUser(FormCollection form)
     {
       string detectedUserName = string.Empty;
       string detectedPassword = string.Empty;
@@ -56,9 +57,9 @@ namespace NetQuax.Controllers
       bool errorFlag = false;
       if (form != null)
       {
-        if (form.AllKeys.Contains("UserName"))
+        if (form.AllKeys.Contains("Username"))
         {
-          detectedUserName = form["UserName"];
+          detectedUserName = form["Username"];
         }
         if (form.AllKeys.Contains("Password"))
         {
@@ -68,7 +69,7 @@ namespace NetQuax.Controllers
         {
           detectedPasswordConfirmation = form["PasswordConfirmation"];
         }
-        if (form.AllKeys.Contains("AddressLine1"))
+        /*if (form.AllKeys.Contains("AddressLine1"))
         {
           detectedAddressLine1 = form["AddressLine1"];
         }
@@ -107,7 +108,7 @@ namespace NetQuax.Controllers
         if (form.AllKeys.Contains("CVV"))
         {
           detectedAddressLine1 = form["CVV"];
-        }
+        }*/
       }
 
       if (detectedUserName == string.Empty)
@@ -118,68 +119,38 @@ namespace NetQuax.Controllers
 
       if (detectedPassword == string.Empty)
       {
-        //TODO: Error
+        errorFlag = true;
       }
       if (detectedPasswordConfirmation == string.Empty)
       {
-        //TODO: Error
+        errorFlag = true;
+
       }
       if (detectedPasswordConfirmation != detectedPassword)
       {
-        //TODO: Error
+        errorFlag = true;
       }
       if (!errorFlag)
 
       {
         using (SqlConnection conn = new SqlConnection(Globals.connectionString))
         {
-            conn.Open();
-            string queryString = string.Format("INSERT INTO CREDITCARD VALUES (CardNumber, ExpDate, CVV, CardIssuer)");
-            SqlCommand cmd = new SqlCommand(queryString, conn);
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                _cardHolder = (string)reader[0];
-            }
-            conn.Close();
-        }
-
-        using (SqlConnection conn = new SqlConnection(Globals.connectionString))
-        {
           conn.Open();
-          string queryString = string.Format("INSERT INTO ADDRESSES VALUES (AddressLine1, AddressLine2, City, State, Zip)");
-          SqlCommand cmd = new SqlCommand(queryString, conn);
-          reader = cmd.ExecuteReader();
-          while (reader.Read())
-          {
-            _cardHolder = (string)reader[0];
-          }
+          SqlCommand cmd = new SqlCommand();
+          cmd.Connection = conn;
+          cmd.CommandText = "INSERT INTO Users (userName, userPassword, isAdmin, userAddressId, UserTypeId,userCCInfo) VALUES (@param1,@param2, @param3, @param4, @param5, @param6)";
+          cmd.Parameters.Add("@param1", SqlDbType.VarChar).Value = detectedUserName;
+          cmd.Parameters.Add("@param2", SqlDbType.VarChar).Value = detectedPassword;
+          cmd.Parameters.Add("@param3", SqlDbType.Bit).Value = 0;
+          cmd.Parameters.Add("@param4", SqlDbType.BigInt).Value = long.MinValue;
+          cmd.Parameters.Add("@param5", SqlDbType.BigInt).Value = long.MinValue;
+          cmd.Parameters.Add("@param6", SqlDbType.BigInt).Value = long.MinValue;
+          cmd.ExecuteNonQuery();
           conn.Close();
         }
-        //TODO: return home view
-
-        //TODO: Credit Card and Address Key
-        //Session["User"] = newUser;
-        /*using (SqlConnection conn = new SqlConnection(Globals.connectionString))
-        {
-            conn.Open();
-            string queryString = string.Format("INSERT INTO USERS VALUES (userName, userPassword, isAdmin, userAddressId, userTypeId, userCCInfo)");
-            SqlCommand cmd = new SqlCommand(queryString, conn);
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                _cardHolder = (string)reader[0];
-            }
-            conn.Close();
-        }*/
-    //TODO: return home view
-    /*}
-    else
-    {
-      //TODO: Return Error View
+      }
+      return RedirectToAction("Index");
     }
-    return View("Index", new NetQuax.Models.HomePageModel());
-  }*/
 
     // Method to be called when user checks out a movie
     public ActionResult Checkout(FormCollection form)
@@ -214,17 +185,8 @@ namespace NetQuax.Controllers
         //TODO: errorChecking
       }
 
-      if (!errorFlag)
-      {
-        //TODO modify userdb to reflect changes
-        //TODO return home view
-      }
-      else
-      {
-        //Don't update db
-        //return error view
-      }
-      return null;
+      return View("Index", new NetQuax.Models.HomePageModel());
+
     }
 
     public JsonResult SignIn(FormCollection form)
@@ -308,6 +270,8 @@ namespace NetQuax.Controllers
     {
       string detectedSearchString = string.Empty;
       string detectedCategory = string.Empty;
+      string detectedFilter = string.Empty;
+      string html = string.Empty;
       List<Movie> filteredMovies = new List<Movie>();
       if (form != null)
       {
@@ -318,6 +282,10 @@ namespace NetQuax.Controllers
         if (form.AllKeys.Contains("SearchCategory"))
         {
           detectedCategory = form["SearchCategory"];
+        }
+        if (form.AllKeys.Contains("FilterCategory"))
+        {
+          detectedFilter = form["FilterCategory"];
         }
       }
 
@@ -364,28 +332,64 @@ namespace NetQuax.Controllers
         }
       }
 
+      List<Movie> furtherFilteredMovie = new List<Movie>();
 
-      string html = RenderRazorViewToString("/Views/Home/_browseMoviesPartial.cshtml", new NetQuax.Models.SearchModel(filteredMovies));
+      if (detectedFilter != "")
+      {
+        if (detectedFilter == "Decade8")
+        {
+          foreach (NetQuax.Entities.Movie m in filteredMovies.Where(x => x.YearReleased >= 1980 && x.YearReleased < 1990))
+          {
+            furtherFilteredMovie.Add(m);
+          }
+        }
+        if (detectedFilter == "Decade9")
+        {
+          foreach (NetQuax.Entities.Movie m in filteredMovies.Where(x => x.YearReleased >= 1990 && x.YearReleased < 2000))
+          {
+            furtherFilteredMovie.Add(m);
+          }
+        }
+        if (detectedFilter == "Decade20")
+        {
+          foreach (NetQuax.Entities.Movie m in filteredMovies.Where(x => x.YearReleased >= 2000))
+          {
+            furtherFilteredMovie.Add(m);
+          }
+        }
+        if (detectedFilter == "Price")
+        {
+          foreach (NetQuax.Entities.Movie m in filteredMovies.Where(x => x.Price < 5))
+          {
+            furtherFilteredMovie.Add(m);
+          }
+        }
+        if (detectedFilter == "Review")
+        {
+          foreach (NetQuax.Entities.Movie m in filteredMovies.Where(x => x.Rating >= 7))
+          {
+            furtherFilteredMovie.Add(m);
+          }
+        }
+      }
+      if (detectedFilter != "")
+      {
+        html = RenderRazorViewToString("/Views/Home/_browseMoviesPartial.cshtml", new NetQuax.Models.SearchModel(furtherFilteredMovie));
+      }
+      else
+      {
+        html = RenderRazorViewToString("/Views/Home/_browseMoviesPartial.cshtml", new NetQuax.Models.SearchModel(filteredMovies));
+      }
+
       return Json(new { Html = html });
     }
-
-    public JsonResult SearchByActor(FormCollection form)
-    {
-      return null;
-    }
-
-    public JsonResult SearchByGenre(FormCollection form)
-    {
-      return null;
-    }
-
     public ActionResult SignOut()
     {
       Session["UserName"] = null;
 
       Session["User"] = null;
 
-      return View("Index");
+      return RedirectToAction("Index");
     }
 
     public ActionResult AddToCart(FormCollection form)

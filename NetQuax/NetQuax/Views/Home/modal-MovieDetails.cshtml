@@ -11,12 +11,12 @@
 
     div.pic {
       padding: 50px;
-      width: 50%
+      text-align:center;
     }
 
     div.description {
       width: 50%;
-      border: 3px solid blue;
+      /*border: 3px solid blue;*/
     }
 
     .column3 {
@@ -34,19 +34,25 @@
       padding: 20px;
     }
   </style>
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title"><b>@Model.Movie.Title</b></h3>
       </div>
       <div class="modal-body">
-
-        <div class="pic">
-          <p><img src=" @("/images/" + Model.Movie.Title + ".jpg")" alt="MovieImage"></p>
+        <div class="row">
+          <div class="col-sm-12">
+          <div class="pic">
+            <img style="width:250px;" src=" @("/images/" + Model.Movie.Title + ".jpg")" alt="MovieImage">
+          </div>
+            </div>
+          
+          </div>
         </div>
-
-        <div class="description">
-          <p> @Model.Movie.Description</p>
+      <div class="row">
+      <div class="col-sm-12">
+        <div style="width: 100%" class="column3">
+          <p style="width: 100%;"> <b>Description: &nbsp;</b> @Model.Movie.Description</p>
         </div>
 
         <div class="column3">
@@ -65,7 +71,8 @@
           <p>$@Model.Movie.Price.00</p>
           <p>Hatchling</p>
         </div>
-
+        </div>
+        </div>
         <div class="modal-footer">
           <div id="signIn-Error" class="margin-bottom-10" style="text-align: center;">
             <p id="addUser-ErrorMessage"></p>
@@ -90,4 +97,3 @@
       </div>
     </div>
   </div>
-</div>

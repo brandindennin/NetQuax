@@ -32,7 +32,7 @@ INSERT INTO USERS VALUES ('Yung', 'Gravy', 1, 1, 1, 1)
 INSERT INTO CREDITCARD VALUES ('1234-1234-1234-1234', GETDATE(), 'VISA', 1, 1)
 */
 
-INSERT INTO MOVIES VALUES ('Raiders of the Lost Ark', 'Harrison Ford is a badass','Steven Spielberg', 'Adventure', 'Harrison Ford', 1981, 4, 'HD', 12.50, 1)
+INSERT INTO MOVIES VALUES ('Raiders of the Lost Ark', 'Harrison Ford is a pretty cool guy','Steven Spielberg', 'Adventure', 'Harrison Ford', 1981, 4, 'HD', 12.50, 1)
 
 INSERT INTO USERTYPES VALUES ('Little Duckling', 2)
 INSERT INTO USERTYPES VALUES ('Full-Grown Duck', 5)

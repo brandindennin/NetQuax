@@ -35,7 +35,7 @@
     }))
     {
       <div class="row margin-top-5">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <select class="form-control" name="SearchCategory">
             <option value="">Search by...</option>
             <option value="Title">Title</option>
@@ -43,13 +43,21 @@
             <option value="Genre">Genre</option>
             <option value="Director">Director</option>
             <option value="Theme">Theme</option>
-
           </select>
         </div>
         <div class="col-sm-4">
           <input type="text" id="searchString" class="form-control" name="SearchString" placeholder="The Mighty Ducks">
         </div>
-
+        <div class="col-sm-4">
+          <select class="form-control" name="FilterCategory">
+            <option value="">Filter By...</option>
+            <option value="Decade8">Decade: 80's</option>
+            <option value="Decade9">Decade: 90's</option>
+            <option value="Decade20">Decade: 2000's</option>
+            <option value="Price">Price: less than 5$</option>
+            <option value="Review">Review: 7+</option>
+          </select>
+        </div>
         <div class="col-sm-1">
           <button type="button" onclick="$('#SearchMovies').submit();" class="btn btn-default">Search</button>
         </div>
@@ -57,7 +65,7 @@
     }
   </div>
 </nav>
-<div class="mainbody" id="myMainBody">
+<div style="max-height:700px; overflow-y: auto; overflow-x: hidden;" class="mainbody" id="myMainBody">
   <div class="row margin-top-20 defaultSort">
 
     @{

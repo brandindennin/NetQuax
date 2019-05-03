@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-  $('.dropdown-toggle').dropdown()
+  $('.dropdown-toggle').dropdown();
 });
 
 function ValidateAddUser() {
@@ -24,15 +24,49 @@ function ValidateAddUser() {
     errorMessage = "confirmation does not match";
   }
 
+  var userType = $('#addUser-userType').val();
+  if (userType > 1) {
+    var issuer = $('#addUser-Issuer').val();
+    if (issuer === "") {
+      errorFlag = true;
+      errorMessage = "card issuer is required";
+    }
+
+
+    var nameOnCard = $('#addUser-nameOnCard').val();
+    alert(nameOnCard);
+    if (nameOnCard === "") {
+      errorFlag = true;
+      errorMessage = "name on card is required";
+    }
+
+
+
+    var cardNumber = $('#addUser-cardNumber').val();
+    if (cardNumber === "") {
+      errorFlag = true;
+      errorMessage = "card number is required";
+    }
+
+
+    var cvv = $('#addUser-CVV').val();
+    if (cvv === "") {
+      errorFlag = true;
+      errorMessage = "cvv is required";
+    }
+  }
+
   if (errorMessage.length > 0) {
     showErrorMessage(errorMessage, errorPanel);
   }
-  return errorFlag;
+  
+  return !errorFlag;
 }
 
 function showErrorMessage(errorMessage, errorPanel) {
-  if (errorMessage != "") {
+  if (errorMessage !== "") {
     $(errorPanel).css("border", "1px solid red");
+    $(errorPanel).css("padding", "5px");
     $(errorPanel).text(errorMessage);
   }
 }
@@ -44,7 +78,7 @@ function ShowBillingInfo(element) {
   if ($(element).val() > 1) {
     $('#billingInfoRow').fadeIn(200);
   }
-  if ($(element).val() == 1) {
+  if ($(element).val() < 2) {
     $('#billingInfoRow').fadeOut(200);
   }
 }
@@ -98,7 +132,7 @@ function HandleSearchJson(e) {
   $('#myMainBody').fadeOut(200, function () {
     this.innerHTML = e.Html;
   });
-  $('#myMainBody').fadeIn(200)
+  $('#myMainBody').fadeIn(200);
 }
 
 function AddToCartSuccess(e) {

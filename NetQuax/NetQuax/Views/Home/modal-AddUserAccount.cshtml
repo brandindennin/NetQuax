@@ -24,11 +24,11 @@
             </div>
             <div class="col-sm-12">
               <label for="addUser-Password">Password:</label>
-              <input id="addUser-Password" class="margin-bottom-10 form-control" name="Password" type="text" value="" />
+              <input id="addUser-Password" class="margin-bottom-10 form-control" name="Password" type="password" value="" />
             </div>
             <div class="col-sm-12">
               <label for="addUser-PasswordConfirmation">Password Confirmation</label>
-              <input type="text" id="addUser-PasswordConfirmation" class="margin-bottom-10 form-control" name="PasswordConfirmation" />
+              <input type="password" id="addUser-PasswordConfirmation" class="margin-bottom-10 form-control" name="PasswordConfirmation" />
             </div>
             @*Address Details*@
             <div class="col-sm-12">
@@ -57,8 +57,8 @@
           <div class="row" style="margin-bottom: 10px;">
             <div class="col-sm-12">
               <label>Plan Type</label>
-              <select class="form-control margin-bottom-10" onchange="ShowBillingInfo(this)">
-                <option value="1">Hatchling (free)</option>
+              <select class="form-control margin-bottom-10" id="addUser-userType" onchange="ShowBillingInfo(this)">
+                <option selected value="1">Hatchling (free)</option>
                 <option value="2">Full-Grown Duck ($5.99) </option>
                 <option value="3">Mother Duck ($10.99) </option>
               </select>
@@ -76,7 +76,7 @@
             </div>
             <div class="col-sm-12">
               <label>Name On Card</label>
-              <input type="text" value="" name="nameOnCard" class="form-control margin-bottom-10" />
+              <input type="text" value="" id="addUser-nameOnCard" name="nameOnCard" class="form-control margin-bottom-10" />
             </div>
             <div class="col-sm-12">
               <label>Card Number:</label>

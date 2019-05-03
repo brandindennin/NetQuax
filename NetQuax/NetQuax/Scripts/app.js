@@ -34,7 +34,6 @@ function ValidateAddUser() {
 
 
     var nameOnCard = $('#addUser-nameOnCard').val();
-    alert(nameOnCard);
     if (nameOnCard === "") {
       errorFlag = true;
       errorMessage = "name on card is required";

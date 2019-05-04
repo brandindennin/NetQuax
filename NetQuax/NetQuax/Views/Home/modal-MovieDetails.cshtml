@@ -11,7 +11,7 @@
 
     div.pic {
       padding: 50px;
-      text-align:center;
+      text-align: center;
     }
 
     div.description {
@@ -42,58 +42,57 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-sm-12">
-          <div class="pic">
-            <img style="width:250px;" src=" @("/images/" + Model.Movie.Title + ".jpg")" alt="MovieImage">
-          </div>
+            <div class="pic">
+              <img style="width:250px;" src=" @("/images/" + Model.Movie.Title + ".jpg")" alt="MovieImage">
             </div>
-          
           </div>
         </div>
+      </div>
       <div class="row">
-      <div class="col-sm-12">
-        <div style="width: 100%" class="column3">
-          <p style="width: 100%;"> <b>Description: &nbsp;</b> @Model.Movie.Description</p>
-        </div>
-
-        <div class="column3">
-          <p><b>Director:&nbsp;</b>@Model.Movie.Director</p>
-          <p><b>Genre:&nbsp;</b>@Model.Movie.Genre</p>
-          <p><b>Actor:&nbsp;</b>@Model.Movie.Actor</p>
-        </div>
-
-        <div class="column4">
-          <p><b>Year:&nbsp;</b>@Model.Movie.YearReleased</p>
-          <p><b>Rating:&nbsp;</b>@Model.Movie.Rating</p>
-          <p><b>Mode:</b> HD</p>
-        </div>
-
-        <div class="column5">
-          <p>$@Model.Movie.Price.00</p>
-          <p>Hatchling</p>
-        </div>
-        </div>
-        </div>
-        <div class="modal-footer">
-          <div id="signIn-Error" class="margin-bottom-10" style="text-align: center;">
-            <p id="addUser-ErrorMessage"></p>
+        <div class="col-sm-12">
+          <div style="width: 100%" class="column3">
+            <p style="width: 100%;"> <b>Description: &nbsp;</b> @Model.Movie.Description</p>
           </div>
-          @using (Ajax.BeginForm("AddToCart", "Home", new
-                AjaxOptions
-          {
-            OnSuccess = "AddToCartSuccess"
-          },
-          new
-          {
-            id = "AddToCart-" + Model.MovieId,
-            name = "AddToCart"
-          }
-          ))
-          {
-            <input type="hidden" name="MovieId" value="@Model.MovieId">
-          }
-          <button type="button" onclick="$('#AddToCart-' + @Model.MovieId).submit()" class="btn btn-primary">Add To Cart</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+          <div class="column3">
+            <p><b>Director:&nbsp;</b>@Model.Movie.Director</p>
+            <p><b>Genre:&nbsp;</b>@Model.Movie.Genre</p>
+            <p><b>Actor:&nbsp;</b>@Model.Movie.Actor</p>
+          </div>
+
+          <div class="column4">
+            <p><b>Year:&nbsp;</b>@Model.Movie.YearReleased</p>
+            <p><b>Rating:&nbsp;</b>@Model.Movie.Rating</p>
+            <p><b>Mode:</b> HD</p>
+          </div>
+
+          <div class="column5">
+            <p>$@Model.Movie.Price.00</p>
+            <p>Hatchling</p>
+          </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <div id="signIn-Error" class="margin-bottom-10" style="text-align: center;">
+          <p id="addUser-ErrorMessage"></p>
+        </div>
+        @using (Ajax.BeginForm("AddToCart", "Home", new
+              AjaxOptions
+        {
+          OnSuccess = "AddToCartSuccess"
+        },
+        new
+        {
+          id = "AddToCart-" + Model.MovieId,
+          name = "AddToCart"
+        }
+        ))
+        {
+          <input type="hidden" name="MovieId" value="@Model.MovieId">
+        }
+        <button type="button" onclick="$('#AddToCart-' + @Model.MovieId).submit()" class="btn btn-primary">Add To Cart</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>

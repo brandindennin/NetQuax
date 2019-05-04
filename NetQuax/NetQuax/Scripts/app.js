@@ -32,14 +32,11 @@ function ValidateAddUser() {
       errorMessage = "card issuer is required";
     }
 
-
     var nameOnCard = $('#addUser-nameOnCard').val();
     if (nameOnCard === "") {
       errorFlag = true;
       errorMessage = "name on card is required";
     }
-
-
 
     var cardNumber = $('#addUser-cardNumber').val();
     if (cardNumber === "") {
@@ -47,18 +44,16 @@ function ValidateAddUser() {
       errorMessage = "card number is required";
     }
 
-
     var cvv = $('#addUser-CVV').val();
     if (cvv === "") {
       errorFlag = true;
       errorMessage = "cvv is required";
     }
-    }
-    alert(errorMessage);
+  }
   if (errorMessage.length > 0) {
     showErrorMessage(errorMessage, errorPanel);
   }
-  
+
   return !errorFlag;
 }
 
@@ -140,4 +135,38 @@ function AddToCartSuccess(e) {
 
 function showCartModal() {
   $('#modal-ShoppingCart').modal('show');
+}
+
+function HandleAddUser(e) {
+  alert("Account created. Please sign in");
+  $('#modal-AddUser').modal('hide');
+}
+
+function VerifyCheckout() {
+  var errorPanel = $('#checkout-Error1');
+  var errorMessage = "";
+  var nameOnCard = $('#checkout-nameOnCard').val();
+  if (nameOnCard === "") {
+    errorFlag = true;
+    errorMessage = "name on card is required";
+  }
+
+  var cardNumber = $('#checkout-cardNumber').val();
+  if (cardNumber === "") {
+    errorFlag = true;
+    errorMessage = "card number is required";
+  }
+
+  var cvv = $('#checkout-CVV').val();
+  if (cvv === "") {
+    errorFlag = true;
+    errorMessage = "cvv is required";
+  }
+  if (errorMessage.length > 0) {
+    showErrorMessage(errorMessage, errorPanel);
+  }
+}
+function showCheckoutModal() {
+  $('#modal-ShoppingCart').modal('hide');
+  $('#modal-Checkout').modal('show');
 }

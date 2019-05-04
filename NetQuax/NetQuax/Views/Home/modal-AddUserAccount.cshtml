@@ -7,7 +7,8 @@
       <div class="modal-body">
         @using (Ajax.BeginForm("AddUser", "Home", new AjaxOptions
         {
-          OnBegin = "return ValidateAddUser()"
+          OnBegin = "return ValidateAddUser()",
+          OnSuccess = "HandleAddUser"
 
         },
         new

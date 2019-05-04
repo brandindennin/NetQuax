@@ -37,20 +37,18 @@
 
               }
             }
-
           </ul>
         </li>
         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
 
         <li><a href="@Url.Action("Browse", "Home")">Browse</a></li>
       </ul>
-
-      
     </div>
   </nav>
   @Html.Partial("modal-ShoppingCart")
   @Html.Partial("modal-SignIn")
   @Html.Partial("modal-AddUserAccount")
+  @Html.Partial("modal-Checkout")
   @{
     if (Session["UserId"] != null && (long)Session["UserId"] > 0)
     {
@@ -69,4 +67,3 @@
   </div>
 </body>
 </html>
-

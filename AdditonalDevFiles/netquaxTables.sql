@@ -1,5 +1,6 @@
 USE NetQuax
 
+
 CREATE TABLE USERS(
   userId BIGINT IDENTITY(1,1) PRIMARY KEY,
   userName VARCHAR(20) NULL,
@@ -7,7 +8,7 @@ CREATE TABLE USERS(
   isAdmin BIT NULL,
   userAddressId BIGINT,
   userTypeId BIGINT NULL,
-  userCCInfoId BIGINT
+  userCCInfo BIGINT
   );
 
 CREATE TABLE ADDRESSES(

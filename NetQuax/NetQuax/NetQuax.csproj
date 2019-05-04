@@ -246,6 +246,7 @@
     <Content Include="Views\Home\modal-SignIn.cshtml" />
     <Content Include="Views\Home\modal-MovieDetails.cshtml" />
     <Content Include="Views\Home\modal-ShoppingCart.cshtml" />
+    <Content Include="Views\Home\modal-Checkout.cshtml" />
     <None Include="Views\Home\Search_Prototype\NetQuax.cshtml" />
     <Content Include="Views\Home\Search_Prototype\NetQuaxFunctionality.js" />
     <Content Include="Views\Home\Search_Prototype\NetQuaxStyle.css" />

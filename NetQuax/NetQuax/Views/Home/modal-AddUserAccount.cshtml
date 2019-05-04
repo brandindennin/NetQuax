@@ -7,7 +7,8 @@
       <div class="modal-body">
         @using (Ajax.BeginForm("AddUser", "Home", new AjaxOptions
         {
-          OnBegin = "return ValidateAddUser() "
+          OnBegin = "return ValidateAddUser()",
+          OnSuccess = "HandleAddUser"
 
         },
         new
@@ -93,7 +94,7 @@
           <div id="addUser-Error" class="margin-bottom-10" style="text-align: center;">
             <p id="addUser-ErrorMessage"></p>
           </div>
-          <button type="button" onclick="$('#addUser-Form').submit()" class="btn btn-primary">Save changes</button>
+          <button type="submit" onclick="$('#addUser-Form').submit()" class="btn btn-primary">Save changes</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>

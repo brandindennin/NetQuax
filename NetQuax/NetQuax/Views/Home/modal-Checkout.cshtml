@@ -1,0 +1,62 @@
+﻿@{
+  List<NetQuax.Entities.Movie> chosenMovies = new List<NetQuax.Entities.Movie>();
+  Decimal sum = 0;
+  if (Session["Cart"] != null)
+  {
+    chosenMovies = (List<NetQuax.Entities.Movie>)Session["Cart"];
+  }
+  foreach (NetQuax.Entities.Movie m in chosenMovies)
+  {
+    sum = sum + m.Price;
+  }
+}
+
+<div id="modal-Checkout" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><b>Checkout</b></h3>
+      </div>
+      <div class="modal-body">
+        <div id="ChecoutBillingInfoRow" class="row" style="">
+          <div class="col-sm-12">
+            <label for="checkout-CCIssuer">Card Issuer</label>
+            <select id="checkout-Issuer" class="form-control margin-bottom-10" name="Issuer">
+              <option value="visa">Visa</option>
+              <option value="mastercard">MasterCard</option>
+              <option value="discover">Discover</option>
+              <option value="americanExpress">Amercan Express</option>
+            </select>
+          </div>
+          <div class="col-sm-12">
+            <label>Name On Card</label>
+            <input type="text" value="" id="checkout-nameOnCard" name="nameOnCard" class="form-control margin-bottom-10" />
+          </div>
+          <div class="col-sm-12">
+            <label>Card Number:</label>
+            <input type="text" value="" id="checkout-cardNumber" name="CardNumber" class="form-control margin-bottom-10" />
+          </div>
+          <div class="col-sm-12">
+            <label>CVV:</label>
+            <input type="text" value="" id="checkout-CVV" name="CVV" class="form-control margin-bottom-10" />
+          </div>
+          <div class=" margin-top-10 col-sm-12">
+            <p><b>Total: &nbsp;</b> $@sum.00 </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div id="checkout-Error1" class="margin-bottom-10" style="text-align: center;">
+            <p id="checkout-ErrorMessage1"></p>
+          </div>
+          @{ 
+            if(sum > 0)
+            {
+              <button type="button" onclick="VerifyCheckout()" class="btn btn-primary">Verify</button>
+            }
+          }
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

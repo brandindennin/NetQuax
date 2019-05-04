@@ -6,7 +6,7 @@
   <title>@ViewBag.Title - NetQuax</title>
   @Styles.Render("~/Content/css")
 </head>
-<body>
+<body style="background-color:white;">
   @Scripts.Render("~/bundles/jquery")
   @Scripts.Render("~/bundles/custom")
   @Scripts.Render("~/bundles/bootstrap")
@@ -37,34 +37,27 @@
 
               }
             }
-
           </ul>
         </li>
         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
 
         <li><a href="@Url.Action("Browse", "Home")">Browse</a></li>
       </ul>
-
-      <form class="navbar-form navbar-left" action="/action_page.php">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="The Mighty Ducks">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
     </div>
   </nav>
   @Html.Partial("modal-ShoppingCart")
   @Html.Partial("modal-SignIn")
   @Html.Partial("modal-AddUserAccount")
+  @Html.Partial("modal-Checkout")
   @{
     if (Session["UserId"] != null && (long)Session["UserId"] > 0)
     {
       @Html.Partial("userDetails", new NetQuax.Models.UserDetailsModel((long)Session["UserId"]))
     }
   }
-
+<a href="@Url.Action("Index", "Home")">
   <div class="top-header"></div>
-
+</a>
   <div class="container body-content">
     <hr />
     @RenderBody()
@@ -74,4 +67,3 @@
   </div>
 </body>
 </html>
-

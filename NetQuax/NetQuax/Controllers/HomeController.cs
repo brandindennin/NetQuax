@@ -1,10 +1,10 @@
 ﻿using NetQuax.Entities;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using System.Data;
 
 namespace NetQuax.Controllers
 {
@@ -124,7 +124,6 @@ namespace NetQuax.Controllers
       if (detectedPasswordConfirmation == string.Empty)
       {
         errorFlag = true;
-
       }
       if (detectedPasswordConfirmation != detectedPassword)
       {
@@ -186,7 +185,6 @@ namespace NetQuax.Controllers
       }
 
       return View("Index", new NetQuax.Models.HomePageModel());
-
     }
 
     public JsonResult SignIn(FormCollection form)
@@ -383,6 +381,7 @@ namespace NetQuax.Controllers
 
       return Json(new { Html = html });
     }
+
     public ActionResult SignOut()
     {
       Session["UserName"] = null;
